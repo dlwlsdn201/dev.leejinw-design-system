@@ -1,236 +1,133 @@
----
-alwaysApply: true
----
-
-# PRD: {{PRODUCT_NAME}}
-
-> 이 문서는 하네스 문서 중 **유일한 누적형 문서**다. 단위 작업 문서(`docs/harness/TASK_RESULT.md`, `REVIEW.md`)는 커밋 시점에 아카이브되므로, 이후에도 알아야 할 결정만 §14 설계 결정 기록으로 승격시킨다.
->
-> 기술 스택과 검증 커맨드는 `docs/TECH_STACK.md`, 코드 규칙은 `.rules`가 SSOT다. 여기에 중복 기술하지 않는다.
-
-## 1. 개요
-
-### 제품명
-
-{{PRODUCT_NAME}}
-
-### 목적
-
-{{PRODUCT_PURPOSE}}
-
-### 한 줄 소개
-
-{{ONE_LINE_DESCRIPTION}}
-
-## 2. 문제 정의
-
-### 현재 문제
-
-- {{PROBLEM_1}}
-- {{PROBLEM_2}}
-- {{PROBLEM_3}}
-
-### 개선 필요성
-
-{{WHY_NOW}}
-
-## 3. 목표
-
-### 핵심 목표
-
-{{PRIMARY_GOAL}}
-
-### 정량 목표
-
-- {{METRIC_GOAL_1}}
-- {{METRIC_GOAL_2}}
-- {{METRIC_GOAL_3}}
-
-### 정성 목표
-
-- {{QUALITATIVE_GOAL_1}}
-- {{QUALITATIVE_GOAL_2}}
-- {{QUALITATIVE_GOAL_3}}
-
-## 4. 대상 사용자
-
-### 1차 사용자
-
-- {{PRIMARY_USER_1}}
-- {{PRIMARY_USER_2}}
-
-### 2차 사용자
-
-- {{SECONDARY_USER_1}}
-- {{SECONDARY_USER_2}}
-
-## 5. 핵심 사용자 시나리오
-
-### 시나리오 1: {{SCENARIO_1_TITLE}}
-
-1. {{SCENARIO_1_STEP_1}}
-2. {{SCENARIO_1_STEP_2}}
-3. {{SCENARIO_1_STEP_3}}
-
-### 시나리오 2: {{SCENARIO_2_TITLE}}
-
-1. {{SCENARIO_2_STEP_1}}
-2. {{SCENARIO_2_STEP_2}}
-3. {{SCENARIO_2_STEP_3}}
-
-### 시나리오 3: {{SCENARIO_3_TITLE}}
-
-1. {{SCENARIO_3_STEP_1}}
-2. {{SCENARIO_3_STEP_2}}
-3. {{SCENARIO_3_STEP_3}}
-
-## 6. 주요 기능
-
-### 6.1 {{FEATURE_1_NAME}}
-
-#### 설명
-
-{{FEATURE_1_DESCRIPTION}}
-
-#### 주요 요구사항
-
-- {{FEATURE_1_REQUIREMENT_1}}
-- {{FEATURE_1_REQUIREMENT_2}}
-- {{FEATURE_1_REQUIREMENT_3}}
-
-### 6.2 {{FEATURE_2_NAME}}
-
-#### 설명
-
-{{FEATURE_2_DESCRIPTION}}
-
-#### 주요 요구사항
-
-- {{FEATURE_2_REQUIREMENT_1}}
-- {{FEATURE_2_REQUIREMENT_2}}
-- {{FEATURE_2_REQUIREMENT_3}}
-
-### 6.3 {{FEATURE_3_NAME}}
-
-#### 설명
-
-{{FEATURE_3_DESCRIPTION}}
-
-#### 주요 요구사항
-
-- {{FEATURE_3_REQUIREMENT_1}}
-- {{FEATURE_3_REQUIREMENT_2}}
-- {{FEATURE_3_REQUIREMENT_3}}
-
-## 7. MVP 범위
-
-### 포함
-
-- {{MVP_INCLUDED_1}}
-- {{MVP_INCLUDED_2}}
-- {{MVP_INCLUDED_3}}
-
-### 제외
-
-- {{MVP_EXCLUDED_1}}
-- {{MVP_EXCLUDED_2}}
-- {{MVP_EXCLUDED_3}}
-
-## 8. 화면 구성
-
-### 8.1 {{SCREEN_1_NAME}}
-
-- {{SCREEN_1_ELEMENT_1}}
-- {{SCREEN_1_ELEMENT_2}}
-- {{SCREEN_1_ELEMENT_3}}
-
-### 8.2 {{SCREEN_2_NAME}}
-
-- {{SCREEN_2_ELEMENT_1}}
-- {{SCREEN_2_ELEMENT_2}}
-- {{SCREEN_2_ELEMENT_3}}
-
-### 8.3 {{SCREEN_3_NAME}}
-
-- {{SCREEN_3_ELEMENT_1}}
-- {{SCREEN_3_ELEMENT_2}}
-- {{SCREEN_3_ELEMENT_3}}
-
-## 9. 데이터 모델 초안
-
-```ts
-type ExampleStatus = 'DRAFT' | 'ACTIVE' | 'ARCHIVED';
-
-type ExampleEntity = {
-  id: string;
-  name: string;
-  status: ExampleStatus;
-  createdAt: string;
-  updatedAt: string;
-};
-```
-
-## 10. 성공 기준
-
-- {{SUCCESS_CRITERION_1}}
-- {{SUCCESS_CRITERION_2}}
-- {{SUCCESS_CRITERION_3}}
-
-## 11. 추천 기술 스택
-
-초안 단계의 후보만 적는다. 확정된 스택과 버전, 검증 커맨드는 `docs/TECH_STACK.md`가 SSOT다.
-
-- {{TECH_STACK_1}}
-- {{TECH_STACK_2}}
-- {{TECH_STACK_3}}
-
-## 12. 우선순위
-
-### 1차
-
-- {{PHASE_1_ITEM_1}}
-- {{PHASE_1_ITEM_2}}
-- {{PHASE_1_ITEM_3}}
-
-### 2차
-
-- {{PHASE_2_ITEM_1}}
-- {{PHASE_2_ITEM_2}}
-- {{PHASE_2_ITEM_3}}
-
-### 3차
-
-- {{PHASE_3_ITEM_1}}
-- {{PHASE_3_ITEM_2}}
-- {{PHASE_3_ITEM_3}}
-
-## 13. 오픈 이슈
-
-- {{OPEN_ISSUE_1}}
-- {{OPEN_ISSUE_2}}
-- {{OPEN_ISSUE_3}}
-
-## 14. 설계 결정 기록 (ADR)
-
-단위 작업 문서는 커밋 후 아카이브되므로, **이후 작업에서도 알아야 할 결정만** 여기로 승격시킨다. 되돌리기 어렵거나 다음 작업의 전제가 되는 결정이 대상이다.
-
-| 일자 | 결정 | 근거 | 검토한 대안 | 관련 작업 |
-| --- | --- | --- | --- | --- |
-| {{ADR_DATE}} | {{ADR_DECISION}} | {{ADR_RATIONALE}} | {{ADR_ALTERNATIVES}} | {{ADR_TASK_ID}} |
-
-## 15. 작업 로드맵
-
-`docs/harness/TASK_PLAN.md`로 내려보낼 단위 작업의 대기열이다. 상세 내용은 `TASK_PLAN.md`가 담고, 여기에는 순서와 상태만 유지한다.
-
-| 순서 | 작업 | 이슈 코드 | 상태 |
-| --- | --- | --- | --- |
-| 1 | {{TASK_1_NAME}} | {{TASK_1_ISSUE}} | 대기 / 진행중 / 완료 |
-| 2 | {{TASK_2_NAME}} | {{TASK_2_ISSUE}} | 대기 |
-
-완료된 작업은 상태만 갱신하고, 결과는 `docs/harness/archive/{issue-code}/`를 참조한다.
-
-## 16. 변경 로그
-
-문서 전체 이력은 git이 담당한다. 여기에는 제품 방향이 바뀐 시점만 한 줄로 남긴다.
-
-- {{CHANGE_DATE}}: {{CHANGE_SUMMARY}}
+# 개인 프론트엔드 디자인 시스템 계획 v1
+
+작성일: 2026-10-17
+
+## 1. 목표와 범위
+
+- 사용처: 개인 포트폴리오와 사이드 프로젝트의 웹 UI.
+- 인상: 절제됨, 정교함, 명료함. 딥 그린 한 계열을 강조색으로 사용하고 나머지는 차가운 중성색으로 구성.
+- 첫 릴리스: 라이트 모드. 다크 모드는 v2에서 의미 기반 토큰을 재매핑하여 추가.
+- 언어: 한국어·영어 전환을 사용하는 제품을 지원. 컴포넌트에는 번역 문구를 내장하지 않고, 실제 번역과 언어 선택은 소비 앱이 소유.
+- 산출물: Figma Foundations·Components, React 컴포넌트 패키지, 사용 문서/예제, 품질 검증 기록.
+- 포트폴리오 아카이브 화면은 필수 산출물이 아닌 통합 검증용 예시. 먼저 컴포넌트 카탈로그로 검증한다.
+
+## 2. 설계 원칙
+
+1. 의미로 선택한다: 색과 간격은 원시 값보다 역할 토큰을 컴포넌트에서 사용한다.
+2. 기본 상태가 좋게 보인다: 과한 장식이나 그림자 대신 타이포그래피, 정렬, 대비를 우선한다.
+3. 접근성을 기본 계약에 넣는다: 키보드, 명확한 이름, 오류, 포커스, 확대, 긴 문자열을 설계 시점부터 확인한다.
+4. 필요해진 것만 공통화한다: v1 컴포넌트는 실제로 재사용 가능한 기본 조각에 한정한다.
+5. Figma와 코드가 같은 결정을 참조한다: 값의 원본은 하나이며, 시각 설계와 실제 동작의 담당 영역을 분리한다.
+
+## 3. Foundations 초안
+
+아래 수치는 범용 웹 UI를 위한 **시작값**이다. 간격과 모서리에 업계 공통의 규범값은 없다. 시안과 실제 컴포넌트에서 조정하되, 조정 후에는 토큰과 Figma를 함께 갱신한다.
+
+### 색
+
+| 역할 | 시작값 | 사용 규칙 |
+| --- | --- | --- |
+| `accent/default` | `#0F766E` | 주요 동작, 활성 링크, 선택 상태에 제한적으로 사용 |
+| `accent/hover` | `#0A5C55` | 강조색 동작의 hover 및 진한 강조 |
+| `accent/subtle` | `#E9F4F0` | 선택 항목의 옅은 배경 |
+| `surface/canvas` | `#F8FAF9` | 페이지 바탕 |
+| `surface/default` | `#FFFFFF` | 입력·메뉴·콘텐츠 표면 |
+| `text/primary` | `#17231F` | 제목과 본문 |
+| `text/secondary` | `#45544C` | 보조 정보. 의미 있는 본문은 이보다 흐리게 하지 않음 |
+| `border/subtle` | `#DCE4DE` | 장식적 구분선 |
+| `border/control` | `#71847A` | 식별이 필요한 입력 경계 |
+| `focus/ring` | `#0A5C55` | 키보드 포커스 |
+| `status/error` | `#B42318` | 오류. 강조색 한 계열 원칙의 의미상 예외 |
+
+- 색은 `primitive → semantic` 두 층으로 시작한다. 버튼 전용 색 토큰은 실제 중복 규칙이 확인될 때만 추가한다.
+- 버튼의 흰색 글자와 `accent/default` 조합은 계산상 약 5.47:1, `text/secondary`와 흰색은 약 8.0:1이다. 구현 후 실제 렌더링 조합을 다시 검사한다.
+- 정상 본문 대비는 4.5:1 이상, 큰 글자는 3:1 이상, 필수 UI 경계와 상태 표시는 인접색 대비 3:1 이상을 목표로 한다. 옅은 `border/subtle`은 필수 식별 수단으로 사용하지 않는다.
+- 색만으로 성공·오류·선택 여부를 전달하지 않는다. 텍스트, 형태, 아이콘 또는 상태 속성을 함께 쓴다.
+
+### 타이포그래피
+
+- 기본 글꼴: Pretendard Variable. 한·영 혼용 문장에 한 계열을 우선 사용하고 영문 전용 디스플레이 글꼴은 v1에서 제외.
+- 글꼴 굵기: 400/500/600/700. 본문 자간은 0, 제목 자간은 실제 한·영 표본을 보고 소폭 조정.
+
+| 토큰 | 크기 / 줄높이 | 용도 |
+| --- | --- | --- |
+| `body` | 16 / 24px | 기본 본문·입력값 |
+| `body-sm` | 14 / 20px | 보조 문장·컴팩트 UI |
+| `caption` | 12 / 16px | 비필수 메타데이터만 |
+| `heading-sm` | 20 / 28px | 컴포넌트/섹션 제목 |
+| `heading-md` | 24 / 32px | 화면 내 주요 제목 |
+| `heading-lg` | 32 / 40px | 페이지 제목 |
+| `display` | 40 / 48px | 넓은 화면의 짧은 대표 문구에만 사용 |
+
+- 제목과 설명은 번역 문자열 길이 증가를 견디도록 높이를 고정하지 않는다. 긴 단어·URL·한글 줄바꿈을 검증한다.
+- 한국어와 영어를 섞어 보여야 하는 고유명사 외에는 소비 앱에서 언어별 문구를 전환한다. 페이지의 `lang` 속성도 언어와 함께 바꾼다.
+
+### 간격·크기·모서리·테두리
+
+| 항목 | 시작값 | 규칙 |
+| --- | --- | --- |
+| 간격 | 4px 기본 단위; `4, 8, 12, 16, 24, 32, 48, 64px` | 내부 간격은 4의 배수, 섹션 간격은 주로 8의 배수 |
+| 컨트롤 높이 | 기본 40px, 터치 44px, 큰 크기 48px | 작은 32px은 충분한 간격이 있는 밀도 높은 데스크톱 화면에만 허용 |
+| 모서리 | 작은 4px, 기본 8px, 큰 표면 12px, 원형은 별도 | 동일 계층의 요소에는 같은 반경 |
+| 테두리 | 보통 1px | 기본 구분은 여백 우선; 필수 컨트롤 경계는 대비 확보 |
+| 포커스 | 2px outline + 2px offset | `:focus-visible` 적용, 고대비 환경과 잘림 여부 확인 |
+| 모션 | 짧은 상태 변화 150ms, 복합 전환 최대 200ms | `prefers-reduced-motion` 존중. 움직임이 정보 전달의 유일한 방법이 되지 않게 함 |
+
+- 24×24 CSS px는 WCAG 2.2 AA의 타깃 크기 기준이다. 시스템 기본 컨트롤은 사용성을 위해 40~44px로 잡고, 아이콘 단독 동작의 실제 클릭 영역은 최소 44px을 목표로 한다.
+- 2px 포커스 외곽선은 WCAG 2.2 AAA의 포커스 모양을 검토하기 좋은 출발점이다. 실제 주변 색과 3:1 상태 대비를 확인한다.
+- 반응형 기준점은 특정 기기 이름이 아니라 콘텐츠가 깨지는 지점에서 정한다. 최소 320px, 일반 태블릿 폭, 넓은 데스크톱 및 200% 확대를 검증한다.
+
+## 4. 첫 컴포넌트 범위
+
+| 컴포넌트 | v1 계약 | 제외/후속 |
+| --- | --- | --- |
+| Button | primary/secondary/ghost, 기본·hover·focus·disabled·loading, 아이콘 조합, `type` 전달 | 모든 제품 동작을 포괄하는 과도한 variant |
+| Link | 일반/강조, 외부 링크 표기, 포커스 | 라우터 종속 API. 앱 어댑터에서 처리 |
+| TextField | label, hint, error, required, disabled, native input 속성, ref | React Hook Form 종속성 |
+| Textarea | TextField와 같은 필드 계약, 리사이즈 정책 | 자동 높이 확장 기본화 |
+| Checkbox | label, hint, error, checked/indeterminate, 키보드 상태 | Switch와의 혼용 |
+| Badge | 의미 없는 일반 라벨과 의미 있는 상태 라벨을 구분 | 클릭 가능한 Badge |
+
+- Card는 먼저 표면·간격을 조합하는 문서 패턴으로 제공한다. Dialog·Select·Tabs·Toast·Table은 실제 소비 사례가 생기면 v1 이후에 추가한다.
+- 컴포넌트는 한국어와 영어 문구, 짧은 값과 긴 값, 마우스와 키보드 사용을 보여주는 예제를 갖는다.
+- 복합 컴포넌트가 필요해지면 직접 ARIA 동작을 조립하기 전에 검증된 접근성 프리미티브를 평가한다.
+
+## 5. Figma·코드·문서 운영
+
+### 한 가지 원본
+
+- 저장소의 DTCG 형식 JSON을 **토큰 값의 원본**으로 둔다. 여기에서 CSS custom properties를 생성하고 Figma 변수로 가져온다.
+- Figma는 시각 구성, 컴포넌트 변형, 상태, 한·영 길이 검토의 작업 공간이다. React 코드와 문서는 실제 동작 및 사용 계약의 원본이다.
+- Figma의 DTCG 가져오기는 지원하는 토큰 유형과 단위가 제한된다. v1은 색·px 치수·숫자·글꼴 이름부터 가져오고, 복합 타이포그래피 스타일은 Figma 텍스트 스타일로 별도 구성한다.
+- v1은 토큰 변경 시 JSON 수정 → CSS 생성/검증 → Figma 가져오기 → 시각 검토의 수동 흐름으로 운영한다. 변경 빈도가 높아질 때만 자동 동기화를 추가한다.
+
+### 구조
+
+- 단일 UI 패키지에 토큰과 React 컴포넌트를 함께 둔다. 별도 토큰 패키지는 React 외 소비자가 생길 때 분리한다.
+- GitHub 저장소는 `dlwlsdn201/leejinw-design-system`에서 코드·문서·검증 앱을 함께 관리한다. npm 배포 대상은 `packages/ui`의 `@leejinw/ui` 하나로 두고, npm 범위 게시 권한과 외부 프로젝트 설치 검증을 공개 배포 전 확인한다.
+- 권장 구조: `packages/ui`(토큰·컴포넌트·스타일), `apps/docs`(Storybook 카탈로그·가이드). 패키지 매니저는 pnpm workspace.
+- 스타일은 CSS custom properties + CSS Modules로 시작한다. Next.js와 Vite 소비 앱에서 Tailwind/SCSS 등 호스트 스타일 방식에 종속되지 않게 한다.
+- React 19·TypeScript를 기준으로 하되 컴포넌트 API는 가능한 한 HTML 기본 속성을 유지한다. 패키지에 앱 전용 상태관리, 라우터, 폼 라이브러리 의존성을 넣지 않는다.
+- 문서의 각 항목: 사용 목적, 언제 쓰지 않는지, props, 상태, 접근성, 한국어·영어 예제, Figma 컴포넌트 링크.
+- Figma 파일 구성: `00 Foundations`, `01 Components`, `02 Patterns & QA`. Starter 플랜의 3페이지 한도에 맞춰 패턴과 검증 기록을 한 페이지에 둔다. 컴포넌트와 코드의 이름 및 variant 명칭을 일치시킨다.
+- 실제 i18n 리소스는 소비 앱이 소유한다. 카탈로그는 한·영 예제로 폭과 줄바꿈을 검증한다. 번역 도구 선택은 소비 앱 요구사항에 따른다.
+
+## 6. Work mode 실행 순서와 완료 기준
+
+1. **프로젝트 준비**: 작업 폴더를 정하고 workspace, UI 패키지, 문서 앱의 최소 구조를 만든다. 사용자가 지정한 기존 Figma 파일에 작업한다.
+2. **Foundations 구현**: DTCG 토큰, CSS 출력, Pretendard 자체 호스팅, Figma 변수·텍스트 스타일·기본 샘플을 만든다. 대비·이름·값 일치를 확인한다.
+3. **컴포넌트 세로 단위 반복**: Button → Link → TextField → Textarea → Checkbox → Badge 순서로 Figma 상태, 코드, Storybook 예제, 의미 있는 테스트를 함께 완성한다.
+4. **통합 검증**: 카탈로그의 작은 조합 예제로 시각적 일관성을 확인한다. 필요하면 예시 화면 하나를 추가하되, 그것이 시스템 범위를 넓히는 이유가 되지 않게 한다.
+5. **출시 준비**: 빌드·타입·린트·테스트, 키보드 조작, 320px·넓은 화면·200% 확대, 한·영 긴 문자열, 실제 소비 앱의 설치/사용을 확인한다. 공개 배포는 별도 명시 요청이 있을 때만 한다.
+
+**v1 완료 조건:** Figma와 코드의 토큰 값이 일치하고, 6개 컴포넌트에 기본/상태/접근성/한·영 예제가 있으며, Next.js와 Vite 소비 환경 모두에서 설치·렌더링을 확인한다. 다크 모드, 복합 컴포넌트, 외부 공개 배포는 후속 작업이다.
+
+## 근거와 참고
+
+- DTCG 토큰 형식: https://www.designtokens.org/
+- Figma 변수·DTCG 가져오기: https://help.figma.com/hc/en-us/articles/15343816063383-Modes-for-variables
+- Pretendard 공식 설명·라이선스: https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md
+- IBM의 8px 기반 공간 시스템 사례: https://www.ibm.com/design/language/2x-grid/
+- WCAG 2.2: https://www.w3.org/TR/WCAG22/
+- ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/
+- Storybook React/Vite 문서: https://storybook.js.org/docs/get-started/frameworks/react-vite
