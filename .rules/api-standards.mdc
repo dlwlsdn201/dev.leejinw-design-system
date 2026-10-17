@@ -1,0 +1,110 @@
+---
+version: v3.0
+updated: 2026-07-05
+description: API 계약(경로·메서드·네이밍), 응답 인터페이스, 에러 핸들링, MSW mock 규칙 (SSOT)
+globs: ["src/shared/api/**/*", "src/entities/**/api/*", "src/entities/**/hook/*"]
+alwaysApply: false
+---
+
+# API 표준 (계약 · 응답 · 에러 · Mock)
+
+이 문서가 API 관련 규칙의 단일 기준(SSOT)이다. 프론트엔드 관점의 계약이며, 백엔드와 API 명세를 합의할 때도 이 기준을 제안한다.
+
+## 1. 엔드포인트 계약
+
+- `path`는 리소스 기준 상대 경로로 작성한다. 공통 접두사(`/api`)는 공통 HTTP 클라이언트의 base URL이 관리하며 Fetcher에 하드코딩하지 않는다.
+- 기본 CRUD는 하나의 리소스 경로 + HTTP 메서드(`GET/POST/PUT/DELETE`)로 구분한다. 조회를 `POST`로 우회하는 등 메서드 남용 금지.
+- 단일 리소스 식별은 경로 파라미터를 사용한다: `users/{userId}`. 필터·정렬·검색·페이지네이션은 쿼리스트링으로 통일한다.
+- 부가 액션은 하위 경로로: `{resource}/{action}` (예: `orders/{id}/cancel`).
+- 횡단 기능(검색·추천·통계)은 역량이 앞에 온다: `search/users`, `stats/orders`. 동일 역량이 여러 리소스에 있으면 경로·쿼리 계약을 대칭으로 유지한다.
+- ⚙️ 프로젝트 설정: 허용 리소스(도메인) 목록을 여기에 유지한다. 신규 도메인은 API 명세 문서에 먼저 반영한 뒤 목록을 갱신한다.
+
+### 필드 네이밍·날짜
+
+- request/response의 모든 필드명은 `snake_case`(⚙️ 백엔드 계약에 따라 조정). TypeScript 타입도 서버 계약 그대로 유지하고, 변환이 필요하면 API 계층 바깥에서 가공한다.
+- 프론트 → 백엔드 기간·시점: UTC Unix epoch 밀리초 정수 (`start_date: 1774969200000`).
+- 백엔드 → 프론트 시각: ISO 8601 UTC 문자열 (`"2026-03-03T00:00:00.000Z"`).
+
+### 인증
+
+- 토큰·세션 발급과 검증은 서버 신뢰 영역(Route Handler, BFF, BaaS 서버 SDK)에서 처리한다. secret key를 브라우저에 노출하지 않는다.
+- Fetcher가 인증 헤더를 개별 조립하지 않는다. 공통 HTTP 클라이언트 또는 표준 세션 처리(쿠키 등)에 위임한다.
+
+## 2. 응답 인터페이스
+
+### 핵심 원칙: 가짜 성공(Fake 200) 금지
+
+비즈니스 실패는 **반드시 HTTP 4xx/5xx + 에러 바디**로 표현한다. `HTTP 200 + { success: false }` 금지. ErrorBoundary·React Query가 HTTP 상태 기반으로 에러를 감지하기 때문이다.
+
+### 성공 (HTTP 2xx)
+
+최상위는 반드시 `{ "data": ... }` 한 겹. raw 배열·단일 객체 루트 금지 (인터셉터 단일화).
+
+```ts
+interface ApiSuccessResponse<T> {
+  data: T;
+  meta?: { page: number; size: number; total: number }; // 목록·페이지네이션 시
+}
+```
+
+```json
+{ "data": [{ "id": 1 }], "meta": { "page": 1, "size": 10, "total": 45 } }
+```
+
+### 에러 (HTTP 4xx/5xx)
+
+```ts
+interface ApiErrorResponse {
+  message: string;      // 필수. 사용자 노출용
+  result_code?: number; // 에러 코드 매핑용(선택)
+}
+```
+
+## 3. 에러 핸들링
+
+### 표준 에러 타입
+
+모든 API 에러는 `@shared/api`의 `NormalizedApiError`로 정규화한다.
+
+```ts
+interface NormalizedApiError {
+  status: number;
+  message: string;
+  code?: string;
+  originalError?: unknown;
+}
+```
+
+`normalizeApiError`가 HTTP 에러·SDK 에러·Zod 검증 에러·unknown을 각각 정규화한다. 타입 판별은 `isNormalizedApiError` 가드를 사용한다.
+
+### 상태 코드별 처리
+
+| HTTP | 처리 |
+|------|------|
+| 400 | 폼/토스트에서 메시지 노출 |
+| 401 | 세션 만료 처리 후 로그인 페이지 이동 |
+| 403 | 접근 불가 메시지 |
+| 404 | 화면별 empty/error fallback |
+| 5xx·네트워크 | 공통 에러 fallback 또는 토스트 (`status: 500`으로 정규화) |
+
+### 레이어별 책임
+
+| 레이어 | 담당 | 금지 |
+|--------|------|------|
+| 공통 HTTP 클라이언트 (`baseApiModule`) | 2xx만 성공 처리, `data` unwrap, 실패 시 `normalizeApiError` reject | — |
+| `entities/{domain}/api` (Fetcher) | API 호출 + 타입 연결 | try-catch, toast, 라우팅 |
+| `entities/{domain}/hook` | 조회: `useSuspenseQuery` / 변경: `useMutation` + `onSuccess`에 `invalidateQueries`만 | toast, modal 제어 |
+| `features` | `<ApiQueryBoundary>` 하위 렌더링, `mutateAsync` 분기에서 toast·modal 닫기·라우팅 | Fetcher 직접 import |
+
+- `useSuspenseQuery` 사용 컴포넌트는 상위에서 `<ApiQueryBoundary>`(`@shared/ui`)로 감싼다. ErrorBoundary/Suspense 직접 조합 금지.
+- hook에 정의한 `onSuccess`와 호출 시 넘긴 `onSuccess`는 둘 다 실행된다. 캐시 무효화는 entities, 사용자 피드백은 features에 둔다.
+- Dialog 제출 실패 시 modal을 닫지 않는다 (성공 분기에서만 닫기).
+
+## 4. MSW Mock
+
+테스트·백엔드 미구현 시 선행 개발용 mock은 MSW로 작성한다.
+
+- 응답 계약(§2)을 자동으로 준수하도록 `src/test/msw/`에 핸들러 팩토리(`mockApiGet`, `mockApiErrorGet` 등)를 두고 사용한다.
+- Node 테스트 환경은 `setupServer` 기반 공용 server를 사용하고, 공용 핸들러는 한 곳(`handlers.ts`)에 등록한다.
+- HTTP 모듈 직접 모킹(`vi.mock('axios')` 등) 금지 — 네트워크 모킹은 MSW만 사용한다.
+- mock 데이터도 성공 응답 최상위가 `{ "data": ... }` 형태인지 확인한다.

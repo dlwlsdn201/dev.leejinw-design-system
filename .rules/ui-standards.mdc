@@ -1,0 +1,52 @@
+---
+version: v2.0
+updated: 2026-07-05
+description: 디자인 토큰, 공통 컴포넌트(@shared/ui) 사용 규칙, Figma 변환 기준
+globs: ["src/**/*.tsx"]
+alwaysApply: true
+---
+
+# UI 규칙
+
+⚙️ 프로젝트 설정: 디자인 토큰·레이아웃·컴포넌트 패턴의 단일 기준 문서(예: `docs/design-system-guidelines.md`)를 지정하고, UI 구현 전 반드시 확인하도록 한다.
+
+## 1. 디자인 토큰
+
+- 색상·spacing·radius·font-size를 하드코딩하지 않는다. 디자인 토큰(Tailwind theme, CSS variable, 테마 유틸리티)만 사용한다.
+- 필요한 토큰이 없으면 임의 값을 쓰지 말고 theme 확장을 먼저 검토한다.
+- 간격(padding/margin/gap)은 `rem` 기반 스케일을 사용한다.
+- 한 컴포넌트 안에서 스타일 조합이 과도하게 반복되면 `shared/ui` 컴포넌트 또는 variant(CVA 등)로 정리한다.
+
+## 2. 컴포넌트 재사용 우선순위
+
+일반 HTML 태그나 외부 컴포넌트를 직접 쓰기 전에 아래 순서로 확인한다.
+
+1. `@shared/ui` — 프로젝트 공통 컴포넌트
+2. 프로젝트가 채택한 headless/디자인 시스템 라이브러리 (예: shadcn/ui, Radix UI)
+3. 아이콘 라이브러리 (예: lucide-react)
+
+- 폼 입력은 일반 `<input>` 대신 `@shared/ui`의 폼 컴포넌트 + react-hook-form 조합을 사용한다.
+- `useSuspenseQuery` 사용 시 `<ApiQueryBoundary>` 필수 (상세 → `api-standards.mdc` §3).
+- 버튼·탭·입력·모달·토스트는 접근성 있는 primitive(role, label 유지) 위에 구현한다.
+
+### ⚙️ 공통 컴포넌트 카탈로그 (프로젝트에서 채움)
+
+| 용도 | 컴포넌트 | 비고 |
+|------|----------|------|
+| 예: 폼 텍스트 입력 | `FormField` | react-hook-form `register` 연동 |
+| 예: 조회 에러/로딩 경계 | `ApiQueryBoundary` | Suspense + ErrorBoundary 통합 |
+
+## 3. 레이아웃 기준 (⚙️ 프로젝트 설정)
+
+프로젝트의 화면 기준(모바일 우선 컨테이너, 반응형 데스크톱 등)을 여기에 명시한다. 예:
+
+- 모바일 중심 앱이라면: 데스크톱에서 중앙 모바일 컨테이너 안에 구현하고, fixed footer·CTA·modal·toast는 컨테이너 기준으로 배치한다.
+- 텍스트가 최소 지원 폭에서 잘리지 않는지 확인한다.
+
+## 4. Figma → 코드 변환 기준
+
+- Figma의 색상·간격·타이포그래피는 프로젝트 토큰으로 매핑한다. 매핑 불가 값은 하드코딩하지 말고 theme 확장을 검토한다.
+- 기존 공통 컴포넌트를 우선 재사용하고, 디자인과 구현이 충돌하면 제품 요구사항·접근성을 우선한 뒤 차이를 작업 로그에 남기고 디자이너와 협의한다.
+- 반응형 여백 미세 조정, 접근성용 색상 대비 조정, 성능을 위한 효과 단순화는 허용한다.
+- 구현 범위는 PRD를 벗어나지 않는다.
+- 변환 절차는 `.skills/figma-to-code/SKILL.md`를 따른다.

@@ -1,0 +1,41 @@
+---
+version: v2.0
+updated: 2026-07-05
+description: 소규모 팀을 위한 최소주의 실용 테스팅 정책 (Vitest + RTL + MSW + Playwright)
+globs: ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
+alwaysApply: true
+---
+
+# 최소주의 테스팅 정책
+
+목표는 커버리지 수치가 아니라 "최소한의 코드로 핵심 비즈니스 로직을 방어"하는 것이다.
+
+## 1. 테스트 대상
+
+| 대상 | 경로 | 방법 |
+|------|------|------|
+| 공통 유틸·API 모듈 | `shared/lib/`, `shared/api/` | 순수 함수 단위 테스트 (MSW 불필요) |
+| 데이터 훅 | `entities/{domain}/hook/` | MSW로 API 모킹. 정상 응답 + **에러 응답(401, 500 등)** 모두 검증 |
+| 핵심 피처 | `features/` | Happy Path 1개 + 치명적 실패(검증 실패, 500 등) 1개 |
+| 공통 UI | `shared/ui/` | 행동 기반 검증. 불안정한 외부 primitive는 접근성 역할이 유지되는 얇은 mock 허용 |
+| E2E | `e2e/` | Playwright. 핵심 사용자 플로우만 |
+
+## 2. 작성 금지 (Anti-Patterns) 🚨
+
+- **UI/스타일 테스트**: 색상, CSS 클래스, margin/padding
+- **구현 세부사항**: `useState` 값, 내부 함수 호출 횟수 — 렌더링된 DOM 행동만 검증
+- **Fetcher 단독 테스트**: `read~`/`create~` 순수 Fetcher는 hook 통합 테스트로 갈음
+- **스냅샷 테스트**: `toMatchSnapshot` 금지
+- **HTTP 모듈 직접 모킹**: 네트워크 모킹은 MSW만 사용. 단 `localStorage`, `Date`(`vi.setSystemTime`), `window` 등 브라우저/전역 객체 모킹은 적극 허용
+
+## 3. 작성 원칙
+
+- **RTL 쿼리 우선순위**: `getByRole` > `getByLabelText` > `getByText`. `getByTestId`·`querySelector`는 불가피할 때만.
+- **Co-location**: `__tests__` 폴더 금지. 대상 파일 옆에 `*.test.ts(x)` 배치.
+- **버그 주도 테스팅**: 버그 수정 요청 시, 코드 수정 **전에** 버그를 재현하는 실패(Red) 회귀 테스트를 먼저 작성하고 실행 결과를 확인한 뒤 수정한다.
+
+## 4. 실행 (⚙️ 프로젝트 스크립트에 맞게 수정)
+
+- 단위·통합: `pnpm test` (1회) / `pnpm test:watch` (감시)
+- E2E: `pnpm e2e`
+- 커버리지 목표는 강제하지 않으나 `shared/lib`·`shared/api` 유틸은 75% 이상 지향.

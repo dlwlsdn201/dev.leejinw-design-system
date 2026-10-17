@@ -1,0 +1,72 @@
+---
+version: v3.0
+updated: 2026-07-05
+description: 기술 스택 전제, 네이밍, 주석, React 및 코드 품질 규칙
+globs: ["src/**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+# 코딩 표준
+
+## 1. 기술 스택 (⚙️ 프로젝트 설정)
+
+새 프로젝트 생성 후 아래 표를 실제 스택으로 교체한다. **`package.json`이 항상 최종 기준**이며, AI 에이전트는 여기 명시된 버전을 전제로 코드를 생성한다.
+
+| 영역 | 기본 전제 |
+|------|-----------|
+| 프레임워크 | Next.js (App Router) + React 19 + TypeScript |
+| 스타일 | Tailwind CSS + CVA (styled-components 미사용) |
+| 서버 상태 | TanStack Query 5 |
+| 클라이언트 상태 | Jotai 2 |
+| 폼·검증 | react-hook-form + Zod |
+| 테스트 | Vitest + React Testing Library + MSW / Playwright |
+
+### App Router 기본 수칙 (Next.js 사용 시)
+
+- 컴포넌트는 기본 Server Component. 상호작용·훅이 필요한 파일에만 `'use client'`를 선언한다.
+- 브라우저 전용 API(`window`, `localStorage` 등)는 클라이언트 컴포넌트의 `useEffect` 내부 또는 `typeof window` 분기에서만 접근한다.
+- secret key·서버 전용 환경변수는 Route Handler·Server Component 등 서버 신뢰 영역에서만 사용한다. `NEXT_PUBLIC_` 접두사는 브라우저 노출을 의미함을 항상 인지한다.
+
+## 2. React 19 규칙
+
+- `import React from 'react'` 선언 불필요.
+- **수동 메모이제이션 금지**: React Compiler 활성 프로젝트에서는 `useMemo`/`useCallback`/`React.memo`를 작성하지 않는다. (⚙️ Compiler 미사용 프로젝트라면 이 항목을 제거)
+- 컴포넌트는 `PascalCase` + 화살표 함수. 이벤트 핸들러는 `handle` 접두사(`handleSubmitClick`).
+
+## 3. 네이밍
+
+### 파일·디렉토리
+
+- **모든 파일·디렉토리는 `kebab-case`**: `login-form.tsx`, `use-user-detail-query.ts` (⚙️ 컴포넌트 PascalCase 관례를 쓰는 프로젝트라면 여기서 변경)
+- 배럴 파일은 `index.ts` 고정. 테스트는 대상 파일 옆 `*.test.ts(x)`.
+
+### 식별자
+
+- 변수·함수: `camelCase`. Boolean은 `is/has/can/should` 접두사 필수.
+- 상수(설정값): `UPPER_SNAKE_CASE` (함수에는 사용 금지).
+- Fetcher: CRUD 접두사 `read/create/update/delete` + camelCase (예: `readUserDetail`).
+- Hook: `use` 접두사 필수. 조회 `use{X}Query`, 변경 `use{Action}{X}Mutation`.
+- Jotai atom: `camelCase + Atom`.
+
+### 타입
+
+- `PascalCase`, `interface` 우선. Props는 `{Component}Props`.
+- API 타입: `{Action}{Entity}Params` / `{Action}{Entity}Response`.
+- 제네릭은 `T` 단독 대신 의미 있는 이름(`ItemType`) 권장.
+
+### 가독성
+
+- `data`, `info`, `temp`, `result` 같은 범용 이름으로 변수를 직접 선언하지 않는다. 라이브러리 관례(`const { data }`)는 의미 있는 이름으로 재할당 권장(`const { data: userList }`).
+- 함수는 단일 책임. "역할을 한 문장으로 설명할 수 있는가"가 분리 기준이며, 분리로 흐름 파악이 오히려 어려워지면 유지한다.
+
+## 4. 주석·문서화
+
+- **선언부(export 함수·타입·컴포넌트)**: JSDoc 필수. `@param`, `@returns`(`@return` 금지), `@example`, `@deprecated` 태그로 통일.
+- **함수 본문**: "What"이 아닌 **"Why"만** 한 줄 주석으로 기술. 코드만으로 알 수 없는 맥락(레거시 대응, 정책 근거 등)이 아니면 쓰지 않는다.
+- 판단 기준: "이 주석을 지워도 다음 개발자가 동일하게 이해하는가?" → Yes면 삭제.
+
+## 5. 코드 품질
+
+- **불변성**: 상태 업데이트 시 원본을 mutate하지 않는다. `map`/`filter`/spread/`toSorted` 사용.
+- **에러 처리 경로 준수**: 컴포넌트 내부에 임의의 try-catch를 만들지 않는다. 조회는 `<ApiQueryBoundary>`, 변경은 `mutateAsync` 분기, 시스템 에러는 공통 HTTP 클라이언트가 담당한다 (상세 → `api-standards.mdc`). localStorage·FileReader 등 비-API 외부 호출에만 개별 try-catch 허용.
+- **린터·포맷터**: ESLint·Prettier 위반은 즉시 수정 후 진행한다.

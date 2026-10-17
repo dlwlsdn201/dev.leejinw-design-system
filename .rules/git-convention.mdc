@@ -1,0 +1,41 @@
+---
+version: v2.0
+updated: 2026-07-05
+description: 브랜치 네이밍, 커밋 메시지(Gitmoji), PR 규칙
+globs: ["*"]
+alwaysApply: false
+---
+
+# Git 컨벤션
+
+## 1. 브랜치 전략
+
+- **메인 브랜치**: `main` (⚙️ 프로젝트에 따라 조정)
+- 작업 브랜치는 메인에서 분기하고, 완료 후 Pull Request(또는 Merge Request)를 생성한다. release 브랜치 단계는 생략하는 간소화 전략을 기본으로 한다.
+- 브랜치 네이밍: `feature--{기능명}` / `bugfix--{내용}` (kebab-case). 이슈 트래커 연동 시 이슈 번호를 접두사로 붙인다 (예: `2-feature--create-user-profile`).
+
+## 2. 커밋 메시지 (Gitmoji)
+
+- 형식: `<gitmoji코드> <제목>` — 예: `:sparkles: add user profile form`
+- 제목은 50자 이내, 마침표 없이. 이슈 연동 시 `<gitmoji> #이슈번호 제목`.
+
+| Gitmoji | 용도 |
+|---------|------|
+| `:sparkles:` ✨ | 신규 기능 |
+| `:beetle:` 🐞 | 버그 수정 |
+| `:zap:` ⚡️ | 성능 개선 |
+| `:lipstick:` 💄 | UI 컴포넌트 수정 |
+| `:art:` 🎨 | 스타일 수정 |
+| `:electric_plug:` 🔌 | API 작업 |
+| `:cyclone:` 🌀 | 리팩터링 |
+| `:building_construction:` 🏗️ | 구조 변경 |
+| `:test_tube:` 🧪 | 테스트 |
+| `:fire:` 🔥 | 삭제 |
+| `:label:` 🏷️ | 타입 관련 |
+| `:nut_and_bolt:` 🔩 | 설정 파일 변경 |
+| `:lock:` 🔒 | 인증·보안 |
+| `:pencil:` 📝 | 문서·파일 정리 |
+
+## 3. 커밋 금지 대상
+
+`.env*`(example 제외), 빌드 산출물(`.next/`, `dist/`), `node_modules/`, 개인 에디터 설정. `.gitignore`를 신뢰하되 스테이징 전 확인한다.

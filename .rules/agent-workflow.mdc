@@ -1,0 +1,43 @@
+---
+version: v2.0
+updated: 2026-07-05
+description: AI 에이전트가 코드를 생성·수정·리뷰할 때 따라야 하는 동작 규칙 + 코드 리뷰 검증 기준
+globs: ["src/**/*.{ts,tsx}"]
+alwaysApply: true
+---
+
+# AI 에이전트 동작 규칙
+
+## 1. 변경 범위 최소화
+
+- 요청받은 기능/버그에 직접 관련된 코드만 수정한다. "하는 김에" 식의 범위 외 리팩토링 금지.
+- 파일 전체 재작성 대신 필요한 부분만 수정하고, 기존 포맷팅을 임의로 변경하지 않는다.
+
+## 2. 변경 후 검증
+
+- 수정한 파일의 린트·타입 에러를 확인하고 본인이 유발한 에러는 즉시 수정한다 (예: `pnpm lint`, `pnpm typecheck`).
+- 테스트 실행 기준은 `testing.mdc`를 따른다: `shared/lib`·`shared/api` 수정 → 단위 테스트, `entities/**/hook` 수정 → 통합 테스트, 단순 UI·스타일 수정 → 불필요.
+
+## 3. 규칙 충돌 시 우선순위
+
+사용자의 명시 요청 > `.rules/*.mdc` > 범용 코딩 원칙 > 에이전트 자체 판단. 모호하면 임의로 결정하지 말고 사용자에게 확인한다.
+
+## 4. 코드 리뷰 검증 항목
+
+코드를 리뷰하거나 리팩터링을 제안할 때 아래를 검증하고 위반 시 지적한다.
+
+1. **FSD 아키텍처** (`architecture.mdc`)
+   - 레이어 역참조 (`entities` → `features`/`widgets`/`app`)
+   - 같은 레이어 내 Cross-import
+   - Deep import (배럴 파일 우회), alias path 미사용
+2. **React 19**: 수동 `useMemo`/`useCallback`/`React.memo` 사용 시 제거 권고 (React Compiler 위임)
+3. **API 패턴** (`api-standards.mdc`)
+   - Fetcher 내부 React Hook·try-catch·UI 부수효과
+   - 컴포넌트 내부 `if (isLoading)`·중복 try-catch → `<ApiQueryBoundary>` 리팩터 제안
+   - features에서 Fetcher 직접 import, entities hook 내 toast/modal
+   - `invalidateQueries` 누락 또는 위치 오류 (entities hook `onSuccess`에 있어야 함)
+   - 성공 응답·MSW mock이 `{ "data": ... }` 래퍼와 필드 네이밍 계약을 따르는지
+4. **상태 관리**: 서버 상태의 `useState` 복사, 합의되지 않은 전역 상태 라이브러리 도입 여부
+5. **UI** (`ui-standards.mdc`): 색상·사이즈 하드코딩, 일반 `<input>` 사용, 레이아웃 기준 무시
+6. **네이밍·가독성** (`coding-standards.mdc`): 파일 네이밍, Boolean 접두사, 범용 변수명
+7. **유지보수성**: 사람이 직접 유지보수·확장 가능한 수준의 가독성·복잡도·응집도를 기준으로 평가한다.
