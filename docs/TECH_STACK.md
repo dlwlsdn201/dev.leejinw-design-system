@@ -11,7 +11,7 @@
 | 테스트 | Vitest 5, React Testing Library |
 | 패키지 관리 | Node.js 22 이상, pnpm 10.34.5 workspace |
 
-이 저장소에는 백엔드·인증·데이터베이스가 없다. `@leejinw/ui`만 향후 npm 게시 대상이며 현재 `private: true`다.
+이 저장소에는 백엔드·인증·데이터베이스가 없다. `@dev.leejinw/ui`만 향후 npm 게시 대상이며 현재 `private: true`다.
 
 ## 검증 명령
 

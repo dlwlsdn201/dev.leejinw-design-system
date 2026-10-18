@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Textarea } from '@leejinw/ui';
+import { Textarea } from '@dev.leejinw/ui';
 
 const meta = {
   title: 'Components/Textarea',

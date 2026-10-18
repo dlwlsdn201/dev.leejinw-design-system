@@ -8,7 +8,7 @@
 
 ## 구조와 단일 원본
 
-- `packages/ui`는 npm 패키지 `@leejinw/ui`의 유일한 소스다. 컴포넌트, CSS Modules, 토큰, 폰트를 소유한다.
+- `packages/ui`는 npm 패키지 `@dev.leejinw/ui`의 유일한 소스다. 컴포넌트, CSS Modules, 토큰, 폰트를 소유한다.
 - 토큰 값의 단일 원본은 `packages/ui/tokens/tokens.json`이다. `pnpm tokens`로 CSS를 생성하고 생성 파일을 직접 수정하지 않는다.
 - `apps/docs`는 카탈로그와 Storybook, `apps/next-smoke`는 Next.js 소비 검증용이다.
 - 번역 문자열과 언어 전환은 소비 앱이 소유한다. UI 패키지에 앱 전용 라우터·폼·상태 관리 의존성을 추가하지 않는다.

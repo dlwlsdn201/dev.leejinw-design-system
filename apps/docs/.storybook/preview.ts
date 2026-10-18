@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
-import '@leejinw/ui/styles.css';
-import '@leejinw/ui/fonts.css';
+import '@dev.leejinw/ui/styles.css';
+import '@dev.leejinw/ui/fonts.css';
 
 const preview: Preview = {
   parameters: {

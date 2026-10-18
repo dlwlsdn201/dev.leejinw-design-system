@@ -23,7 +23,7 @@ importers:
 
   apps/docs:
     dependencies:
-      '@leejinw/ui':
+      '@dev.leejinw/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       react:
@@ -54,7 +54,7 @@ importers:
 
   apps/next-smoke:
     dependencies:
-      '@leejinw/ui':
+      '@dev.leejinw/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:

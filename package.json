@@ -6,14 +6,14 @@
   "packageManager": "pnpm@10.34.5",
   "scripts": {
     "tokens": "node packages/ui/scripts/build-tokens.mjs",
-    "build": "pnpm tokens && pnpm --filter @leejinw/ui build && pnpm --filter @leejinw/docs build && pnpm --filter @leejinw/next-smoke build",
-    "typecheck": "pnpm tokens && pnpm --filter @leejinw/ui build && pnpm --filter @leejinw/ui typecheck && pnpm --filter @leejinw/docs typecheck && pnpm --filter @leejinw/next-smoke typecheck",
+    "build": "pnpm tokens && pnpm --filter @dev.leejinw/ui build && pnpm --filter @leejinw/docs build && pnpm --filter @leejinw/next-smoke build",
+    "typecheck": "pnpm tokens && pnpm --filter @dev.leejinw/ui build && pnpm --filter @dev.leejinw/ui typecheck && pnpm --filter @leejinw/docs typecheck && pnpm --filter @leejinw/next-smoke typecheck",
     "lint": "eslint .",
-    "test": "pnpm tokens:check && pnpm --filter @leejinw/ui test",
+    "test": "pnpm tokens:check && pnpm --filter @dev.leejinw/ui test",
     "tokens:check": "node packages/ui/scripts/validate-tokens.mjs",
-    "dev": "pnpm tokens && pnpm --filter @leejinw/ui build && pnpm --filter @leejinw/docs dev",
-    "storybook": "pnpm tokens && pnpm --filter @leejinw/ui build && pnpm --filter @leejinw/docs storybook",
-    "storybook:build": "pnpm tokens && pnpm --filter @leejinw/ui build && pnpm --filter @leejinw/docs storybook:build"
+    "dev": "pnpm tokens && pnpm --filter @dev.leejinw/ui build && pnpm --filter @leejinw/docs dev",
+    "storybook": "pnpm tokens && pnpm --filter @dev.leejinw/ui build && pnpm --filter @leejinw/docs storybook",
+    "storybook:build": "pnpm tokens && pnpm --filter @dev.leejinw/ui build && pnpm --filter @leejinw/docs storybook:build"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

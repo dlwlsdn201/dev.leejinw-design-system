@@ -2,7 +2,7 @@
 
 개인 포트폴리오와 사이드 프로젝트를 위한 React 디자인 시스템의 첫 버전입니다. 딥 그린 한 계열과 차가운 중성색, Pretendard Variable, 라이트 모드를 사용합니다. 한국어·영어 전환은 소비 앱이 담당하며 컴포넌트에는 번역 문구를 넣지 않습니다.
 
-GitHub 저장소: [dlwlsdn201/leejinw-design-system](https://github.com/dlwlsdn201/leejinw-design-system). npm 패키지 이름은 `@leejinw/ui`입니다.
+GitHub 저장소: [dlwlsdn201/leejinw-design-system](https://github.com/dlwlsdn201/leejinw-design-system). npm 패키지 이름은 `@dev.leejinw/ui`입니다.
 
 ## 구성
 

@@ -104,7 +104,7 @@
 ### 구조
 
 - 단일 UI 패키지에 토큰과 React 컴포넌트를 함께 둔다. 별도 토큰 패키지는 React 외 소비자가 생길 때 분리한다.
-- GitHub 저장소는 `dlwlsdn201/leejinw-design-system`에서 코드·문서·검증 앱을 함께 관리한다. npm 배포 대상은 `packages/ui`의 `@leejinw/ui` 하나로 두고, npm 범위 게시 권한과 외부 프로젝트 설치 검증을 공개 배포 전 확인한다.
+- GitHub 저장소는 `dlwlsdn201/leejinw-design-system`에서 코드·문서·검증 앱을 함께 관리한다. npm 배포 대상은 `packages/ui`의 `@dev.leejinw/ui` 하나로 두고, npm 범위 게시 권한과 외부 프로젝트 설치 검증을 공개 배포 전 확인한다.
 - 권장 구조: `packages/ui`(토큰·컴포넌트·스타일), `apps/docs`(Storybook 카탈로그·가이드). 패키지 매니저는 pnpm workspace.
 - 스타일은 CSS custom properties + CSS Modules로 시작한다. Next.js와 Vite 소비 앱에서 Tailwind/SCSS 등 호스트 스타일 방식에 종속되지 않게 한다.
 - React 19·TypeScript를 기준으로 하되 컴포넌트 API는 가능한 한 HTML 기본 속성을 유지한다. 패키지에 앱 전용 상태관리, 라우터, 폼 라이브러리 의존성을 넣지 않는다.

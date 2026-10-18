@@ -1,11 +1,11 @@
-# @leejinw/ui
+# @dev.leejinw/ui
 
 React 19용 기본 UI 컴포넌트입니다. 앱의 라우터, 폼 라이브러리, 상태 관리에 의존하지 않습니다.
 
 ```tsx
-import '@leejinw/ui/styles.css';
-import '@leejinw/ui/fonts.css';
-import { Button, TextField } from '@leejinw/ui';
+import '@dev.leejinw/ui/styles.css';
+import '@dev.leejinw/ui/fonts.css';
+import { Button, TextField } from '@dev.leejinw/ui';
 
 export const Example = () => (
   <form>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Link } from '@leejinw/ui';
+import { Link } from '@dev.leejinw/ui';
 
 const meta = {
   title: 'Components/Link',

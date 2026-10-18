@@ -1,4 +1,4 @@
-import { Badge, Button, TextField } from '@leejinw/ui';
+import { Badge, Button, TextField } from '@dev.leejinw/ui';
 
 /** Renders package components inside the Next.js App Router. */
 const HomePage = () => (

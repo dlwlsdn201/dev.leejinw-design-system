@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Badge, Button, Checkbox, Link, Textarea, TextField } from '@leejinw/ui';
+import { Badge, Button, Checkbox, Link, Textarea, TextField } from '@dev.leejinw/ui';
 
 type Language = 'ko' | 'en';
 
