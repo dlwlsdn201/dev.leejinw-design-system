@@ -5,7 +5,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dlwlsdn201/leejinw-design-system.git",
+    "url": "git+https://github.com/dlwlsdn201/dev.leejinw-design-system.git",
     "directory": "packages/ui"
   },
   "files": ["dist", "tokens", "README.md"],
