@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Badge, Button, Checkbox, Link, Textarea, TextField } from '@dev.leejinw/ui';
+import tokens from '@dev.leejinw/ui/tokens.json';
 
 type Language = 'ko' | 'en';
 
@@ -11,7 +12,16 @@ const COPY = {
     components: '컴포넌트',
     colors: '색상',
     typography: '타이포그래피',
-    spacing: '간격과 형태',
+    spacing: '간격',
+    shape: '모서리와 테두리',
+    actualSize: '두 요소 사이에 실제 간격을 적용했습니다. (1:1 CSS px)',
+    sampleDesign: '디자인',
+    sampleDevelopment: '개발',
+    spacingUsage: { micro: '미세 조정', '1': '밀접한 아이콘과 텍스트', '2': '관련 태그나 보조 요소', '3': '작은 컨트롤 그룹', '4': '관련 폼 요소', '6': '카드 내부 콘텐츠 그룹', '8': '독립적인 콘텐츠 그룹', '12': '작은 섹션 사이', '16': '큰 섹션 사이' },
+    corners: '모서리 반경',
+    borders: '테두리 두께',
+    focus: '포커스 링',
+    focusOffset: '바깥 간격',
     spacingDescription: '4px을 기본 단위로 사용합니다. 컨트롤은 기본 40px, 터치 환경에서는 최소 44px을 목표로 합니다.',
     button: '버튼',
     buttonDescription: '동작을 실행합니다. 한 화면에서 가장 중요한 동작에만 primary를 사용합니다.',
@@ -52,7 +62,16 @@ const COPY = {
     components: 'Components',
     colors: 'Color',
     typography: 'Typography',
-    spacing: 'Spacing & shape',
+    spacing: 'Spacing',
+    shape: 'Corners & borders',
+    actualSize: 'Actual spacing between two elements. (1:1 CSS px)',
+    sampleDesign: 'Design',
+    sampleDevelopment: 'Code',
+    spacingUsage: { micro: 'Fine adjustments', '1': 'Closely related icons and text', '2': 'Related tags or supporting elements', '3': 'Small control groups', '4': 'Related form elements', '6': 'Content groups within a card', '8': 'Independent content groups', '12': 'Between small sections', '16': 'Between major sections' },
+    corners: 'Corner radius',
+    borders: 'Border width',
+    focus: 'Focus ring',
+    focusOffset: 'Offset',
     spacingDescription: 'Spacing starts from 4px. Controls are 40px by default, with at least 44px for touch use.',
     button: 'Button',
     buttonDescription: 'Triggers an action. Reserve primary emphasis for the most important action on a screen.',
@@ -89,12 +108,18 @@ const COPY = {
 } as const;
 
 const SWATCHES = [
-  { name: 'Accent', hex: '#0F766E', className: 'swatch-accent' },
-  { name: 'Canvas', hex: '#F8FAF9', className: 'swatch-canvas' },
-  { name: 'Surface', hex: '#FFFFFF', className: 'swatch-surface' },
-  { name: 'Text', hex: '#17231F', className: 'swatch-text' },
-  { name: 'Border', hex: '#71847A', className: 'swatch-border' },
+  { name: 'Accent', token: 'color.action.default', hex: tokens.color.primitive.green['600'].$value.hex, className: 'swatch-accent' },
+  { name: 'Canvas', token: 'color.surface.canvas', hex: tokens.color.primitive.neutral.canvas.$value.hex, className: 'swatch-canvas' },
+  { name: 'Surface', token: 'color.surface.default', hex: tokens.color.primitive.neutral.white.$value.hex, className: 'swatch-surface' },
+  { name: 'Text', token: 'color.text.primary', hex: tokens.color.primitive.neutral.ink.$value.hex, className: 'swatch-text' },
+  { name: 'Border', token: 'color.border.control', hex: tokens.color.primitive.neutral.control.$value.hex, className: 'swatch-border' },
 ] as const;
+
+const SPACING_SPECIMENS = (Object.entries(tokens.space) as [keyof typeof tokens.space, (typeof tokens.space)[keyof typeof tokens.space]][]).sort(([, first], [, second]) => first.$value.value - second.$value.value);
+const RADIUS_SPECIMENS = Object.entries(tokens.radius);
+const STROKE_SPECIMENS = Object.entries(tokens.stroke);
+const FOCUS_WIDTH = tokens.focusIndicator.width.$value;
+const FOCUS_OFFSET = tokens.focusIndicator.offset.$value;
 
 /** Displays the bilingual foundation and component catalogue. */
 const App = () => {
@@ -137,10 +162,10 @@ const App = () => {
             <article className="foundation-panel color-panel">
               <div className="panel-head"><h3>{copy.colors}</h3><span>LIGHT / V1</span></div>
               <div className="swatches">
-                {SWATCHES.map(({ name, hex, className }) => (
+                {SWATCHES.map(({ name, token, hex, className }) => (
                   <div className="swatch-row" key={name}>
                     <span className={`swatch ${className}`} aria-hidden="true" />
-                    <span className="swatch-name">{name}</span>
+                    <span className="swatch-name">{name}<small>{token}</small></span>
                     <code>{hex}</code>
                   </div>
                 ))}
@@ -153,10 +178,48 @@ const App = () => {
             </article>
             <article className="foundation-panel spacing-panel">
               <div className="panel-head"><h3>{copy.spacing}</h3><span>4PX BASE</span></div>
-              <div className="space-bars" aria-label="4, 8, 12, 16, 24, 32px spacing scale">
-                {[4, 8, 12, 16, 24, 32].map((value) => <div key={value}><span>{value}</span><i style={{ width: `${value * 4}px` }} /></div>)}
+              <p className="specimen-caption">{copy.actualSize}</p>
+              <div className="spacing-examples">
+                {SPACING_SPECIMENS.map(([name, token]) => (
+                  <figure className="spacing-example" key={name}>
+                    <figcaption><code>space.{name}</code><strong>{token.$value.value}{token.$value.unit}</strong></figcaption>
+                    <div className="spacing-preview">
+                      <div className="spacing-pair" style={{ gap: `var(--ds-space-${name})` }}>
+                        <span>{copy.sampleDesign}</span><span>{copy.sampleDevelopment}</span>
+                      </div>
+                    </div>
+                    <p>{copy.spacingUsage[name]}</p>
+                  </figure>
+                ))}
               </div>
               <p>{copy.spacingDescription}</p>
+            </article>
+            <article className="foundation-panel shape-panel">
+              <div className="panel-head"><h3>{copy.shape}</h3><span>SHAPE</span></div>
+              <h4 className="specimen-label">{copy.corners}</h4>
+              <div className="shape-specimens">
+                {RADIUS_SPECIMENS.map(([name, token]) => (
+                  <div className="shape-specimen" key={name}>
+                    <span className="radius-sample" style={{ borderRadius: `var(--ds-radius-${name})` }} aria-hidden="true" />
+                    <code>radius.{name}</code>
+                    <span>{token.$value.value}{token.$value.unit}</span>
+                  </div>
+                ))}
+              </div>
+              <h4 className="specimen-label">{copy.borders}</h4>
+              <div className="stroke-specimens">
+                {STROKE_SPECIMENS.map(([name, token]) => (
+                  <div className="shape-specimen" key={name}>
+                    <span className="stroke-sample" style={{ borderWidth: `var(--ds-stroke-${name})` }} aria-hidden="true" />
+                    <code>stroke.{name}</code>
+                    <span>{token.$value.value}{token.$value.unit}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="focus-specimen">
+                <span className="focus-sample">{copy.focus}</span>
+                <span>{FOCUS_WIDTH.value}{FOCUS_WIDTH.unit} · {copy.focusOffset} {FOCUS_OFFSET.value}{FOCUS_OFFSET.unit}</span>
+              </div>
             </article>
           </div>
         </section>

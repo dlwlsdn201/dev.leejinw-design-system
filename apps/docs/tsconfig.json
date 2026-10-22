@@ -1,5 +1,5 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": { "types": ["vite/client"], "paths": { "@dev.leejinw/ui": ["../../packages/ui/src/index.ts"] } },
+  "compilerOptions": { "types": ["vite/client"], "resolveJsonModule": true, "paths": { "@dev.leejinw/ui": ["../../packages/ui/src/index.ts"] } },
   "include": ["src", "vite.config.ts"]
 }
