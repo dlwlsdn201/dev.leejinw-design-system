@@ -1,0 +1,678 @@
+{
+  "browser": "155.0.8059.82",
+  "catalogue": "http://127.0.0.1:5175/",
+  "layouts": [
+    {
+      "width": 1440,
+      "lang": "ko",
+      "scrollWidth": 1440,
+      "overflow": [],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 47.96875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 99.921875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "TEXTAREA",
+          "height": 78,
+          "width": 181
+        }
+      ],
+      "hero": {
+        "text": "QuietPrecision.",
+        "fontSize": "132px",
+        "letterSpacing": "-12.144px"
+      }
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "scrollWidth": 1440,
+      "overflow": [],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 102.640625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 60.421875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 90.1875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 102.640625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 102.640625
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "TEXTAREA",
+          "height": 78,
+          "width": 181
+        }
+      ],
+      "hero": {
+        "text": "QuietPrecision.",
+        "fontSize": "132px",
+        "letterSpacing": "-12.144px"
+      }
+    },
+    {
+      "width": 768,
+      "lang": "ko",
+      "scrollWidth": 768,
+      "overflow": [],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 47.96875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 99.921875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "TEXTAREA",
+          "height": 78,
+          "width": 181
+        }
+      ],
+      "hero": {
+        "text": "QuietPrecision.",
+        "fontSize": "76.8px",
+        "letterSpacing": "-7.0656px"
+      }
+    },
+    {
+      "width": 768,
+      "lang": "en",
+      "scrollWidth": 768,
+      "overflow": [],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 102.640625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 60.421875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 90.1875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 102.640625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 24,
+          "width": 102.640625
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "TEXTAREA",
+          "height": 78,
+          "width": 181
+        }
+      ],
+      "hero": {
+        "text": "QuietPrecision.",
+        "fontSize": "76.8px",
+        "letterSpacing": "-7.0656px"
+      }
+    },
+    {
+      "width": 320,
+      "lang": "ko",
+      "scrollWidth": 320,
+      "overflow": [],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 47.96875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 99.921875
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 119.90625
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "INPUT",
+          "height": 24,
+          "width": 168
+        },
+        {
+          "tag": "TEXTAREA",
+          "height": 78,
+          "width": 181
+        }
+      ],
+      "hero": {
+        "text": "QuietPrecision.",
+        "fontSize": "58px",
+        "letterSpacing": "-5.336px"
+      }
+    },
+    {
+      "width": 320,
+      "lang": "en",
+      "scrollWidth": 320,
+      "overflow": [],
+      "controls": [
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 106.265625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 60.09375
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 92.890625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 106.265625
+        },
+        {
+          "tag": "BUTTON",
+          "height": 25,
+          "width": 106.265625
+        },
+        {
+          "tag": "INPUT",
+          "height": 25,
+          "width": 174
+        },
+        {
+          "tag": "INPUT",
+          "height": 25,
+          "width": 174
+        },
+        {
+          "tag": "TEXTAREA",
+          "height": 82,
+          "width": 181
+        }
+      ],
+      "hero": {
+        "text": "QuietPrecision.",
+        "fontSize": "58px",
+        "letterSpacing": "-5.336px"
+      }
+    }
+  ],
+  "errors": [],
+  "i18n": {
+    "lang": "en",
+    "inputRetained": "입력 유지 확인"
+  },
+  "keyboard": [
+    {
+      "tag": "A",
+      "text": "QP.",
+      "label": "Quiet Precision home",
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 72,
+      "y": 21.5,
+      "w": 32.6875,
+      "h": 25
+    },
+    {
+      "tag": "A",
+      "text": "기초 규칙",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 1125.25,
+      "y": 25.5,
+      "w": 59.453125,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "컴포넌트",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 1208.703125,
+      "y": 25.5,
+      "w": 55.953125,
+      "h": 17
+    },
+    {
+      "tag": "BUTTON",
+      "text": "KR",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 1304.65625,
+      "y": 20,
+      "w": 26,
+      "h": 28
+    },
+    {
+      "tag": "BUTTON",
+      "text": "EN",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 1344,
+      "y": 20,
+      "w": 24,
+      "h": 28
+    },
+    {
+      "tag": "BUTTON",
+      "text": "변경 사항 저장",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 96,
+      "y": 1621.71875,
+      "w": 119.90625,
+      "h": 25
+    },
+    {
+      "tag": "BUTTON",
+      "text": "취소",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 227.90625,
+      "y": 1621.71875,
+      "w": 47.96875,
+      "h": 25
+    },
+    {
+      "tag": "BUTTON",
+      "text": "자세히 보기",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 287.875,
+      "y": 1621.71875,
+      "w": 99.921875,
+      "h": 25
+    },
+    {
+      "tag": "A",
+      "text": "사용 가이드",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 751,
+      "y": 1621.71875,
+      "w": 83.921875,
+      "h": 19
+    },
+    {
+      "tag": "A",
+      "text": "외부 문서 ↗",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 846.921875,
+      "y": 1621.71875,
+      "w": 87.921875,
+      "h": 19
+    },
+    {
+      "tag": "INPUT",
+      "text": "",
+      "label": null,
+      "placeholder": "예: 개인 디자인 시스템",
+      "id": "_r_0_",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 195.90625,
+      "y": 1893.71875,
+      "w": 168,
+      "h": 24
+    },
+    {
+      "tag": "INPUT",
+      "text": "",
+      "label": null,
+      "placeholder": null,
+      "id": "_r_1_",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 143.953125,
+      "y": 1937.71875,
+      "w": 168,
+      "h": 24
+    },
+    {
+      "tag": "TEXTAREA",
+      "text": "",
+      "label": null,
+      "placeholder": "프로젝트의 목표와 주요 결정을 적어 주세요.",
+      "id": "_r_2_",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 850.90625,
+      "y": 1893.71875,
+      "w": 181,
+      "h": 78
+    },
+    {
+      "tag": "INPUT",
+      "text": "",
+      "label": null,
+      "placeholder": null,
+      "id": "_r_3_",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 95, 204) auto 1px",
+      "x": 100,
+      "y": 2170.71875,
+      "w": 13,
+      "h": 13
+    },
+    {
+      "tag": "BODY",
+      "text": "\n    QP.기초 규칙컴포넌트KR/ENPERSONAL DESIGN SY",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": false,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 2704.3125
+    },
+    {
+      "tag": "A",
+      "text": "QP.",
+      "label": "Quiet Precision home",
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 72,
+      "y": 21.5,
+      "w": 32.6875,
+      "h": 25
+    },
+    {
+      "tag": "A",
+      "text": "기초 규칙",
+      "label": null,
+      "placeholder": null,
+      "id": "",
+      "disabled": false,
+      "focusVisible": true,
+      "outline": "rgb(0, 0, 0) none 3px",
+      "x": 1125.25,
+      "y": 25.5,
+      "w": 59.453125,
+      "h": 17
+    }
+  ],
+  "reverseTab": {
+    "tag": "A",
+    "text": "QP."
+  },
+  "checkboxSpace": true,
+  "normalMotion": {
+    "animation": "none",
+    "transition": "0s"
+  },
+  "reducedMotion": {
+    "animation": "none",
+    "transition": "0s"
+  },
+  "forcedColors": {
+    "matches": true,
+    "outline": "rgba(5, 0, 73, 0.8) auto 1px",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(255, 255, 255, 0)"
+  },
+  "longLabels": [
+    {
+      "text": "프로젝트의 모든 변경 사항을 확인하고 최종 저장하기 위한 매우 긴 버튼 이름입니다",
+      "width": 232,
+      "scrollWidth": 228,
+      "clientWidth": 228,
+      "right": 276,
+      "viewport": 320,
+      "whiteSpace": "normal"
+    },
+    {
+      "text": "Save all project changes and continue to the next configuration step",
+      "width": 232,
+      "scrollWidth": 228,
+      "clientWidth": 228,
+      "right": 276,
+      "viewport": 320,
+      "whiteSpace": "normal"
+    }
+  ],
+  "koreanLineBreaks": {
+    "wordBreak": "normal",
+    "lines": [
+      "사용자가이해하",
+      "기쉬운프로젝트",
+      "이름을입력해주",
+      "세요"
+    ]
+  },
+  "storybookMixed": {
+    "before": {
+      "checked": false,
+      "indeterminate": true,
+      "aria": "mixed"
+    },
+    "after": {
+      "checked": true,
+      "indeterminate": false,
+      "aria": "mixed"
+    },
+    "axAfter": [
+      {
+        "name": "전체 선택 / Select all",
+        "properties": [
+          {
+            "name": "invalid",
+            "value": {
+              "type": "token",
+              "value": "false"
+            }
+          },
+          {
+            "name": "focusable",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "focused",
+            "value": {
+              "type": "booleanOrUndefined",
+              "value": true
+            }
+          },
+          {
+            "name": "checked",
+            "value": {
+              "type": "tristate",
+              "value": "true"
+            }
+          },
+          {
+            "name": "labelledby",
+            "value": {
+              "type": "nodeList",
+              "relatedNodes": [
+                {
+                  "backendDOMNodeId": 207,
+                  "text": "전체 선택 / Select all"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "disabledInput": true,
+  "textareaError": "true"
+}

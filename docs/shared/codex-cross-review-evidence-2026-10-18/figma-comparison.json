@@ -1,0 +1,414 @@
+{
+  "tokenCount": 72,
+  "figmaVariableCount": 72,
+  "mismatches": [],
+  "sets": [
+    {
+      "id": "7:43",
+      "name": "Button",
+      "count": 18,
+      "variants": [
+        {
+          "name": "Size=Small, Appearance=Primary, State=Default",
+          "w": 140,
+          "h": 32
+        },
+        {
+          "name": "Size=Small, Appearance=Primary, State=Disabled",
+          "w": 140,
+          "h": 32
+        },
+        {
+          "name": "Size=Medium, Appearance=Primary, State=Default",
+          "w": 140,
+          "h": 40
+        },
+        {
+          "name": "Size=Medium, Appearance=Primary, State=Disabled",
+          "w": 140,
+          "h": 40
+        },
+        {
+          "name": "Size=Large, Appearance=Primary, State=Default",
+          "w": 140,
+          "h": 48
+        },
+        {
+          "name": "Size=Large, Appearance=Primary, State=Disabled",
+          "w": 140,
+          "h": 48
+        },
+        {
+          "name": "Size=Small, Appearance=Secondary, State=Default",
+          "w": 140,
+          "h": 32
+        },
+        {
+          "name": "Size=Small, Appearance=Secondary, State=Disabled",
+          "w": 140,
+          "h": 32
+        },
+        {
+          "name": "Size=Medium, Appearance=Secondary, State=Default",
+          "w": 140,
+          "h": 40
+        },
+        {
+          "name": "Size=Medium, Appearance=Secondary, State=Disabled",
+          "w": 140,
+          "h": 40
+        },
+        {
+          "name": "Size=Large, Appearance=Secondary, State=Default",
+          "w": 140,
+          "h": 48
+        },
+        {
+          "name": "Size=Large, Appearance=Secondary, State=Disabled",
+          "w": 140,
+          "h": 48
+        },
+        {
+          "name": "Size=Small, Appearance=Ghost, State=Default",
+          "w": 140,
+          "h": 32
+        },
+        {
+          "name": "Size=Small, Appearance=Ghost, State=Disabled",
+          "w": 140,
+          "h": 32
+        },
+        {
+          "name": "Size=Medium, Appearance=Ghost, State=Default",
+          "w": 140,
+          "h": 40
+        },
+        {
+          "name": "Size=Medium, Appearance=Ghost, State=Disabled",
+          "w": 140,
+          "h": 40
+        },
+        {
+          "name": "Size=Large, Appearance=Ghost, State=Default",
+          "w": 140,
+          "h": 48
+        },
+        {
+          "name": "Size=Large, Appearance=Ghost, State=Disabled",
+          "w": 140,
+          "h": 48
+        }
+      ]
+    },
+    {
+      "id": "7:60",
+      "name": "TextField",
+      "count": 3,
+      "variants": [
+        {
+          "name": "State=Default",
+          "w": 300,
+          "h": 94
+        },
+        {
+          "name": "State=Error",
+          "w": 300,
+          "h": 94
+        },
+        {
+          "name": "State=Disabled",
+          "w": 300,
+          "h": 94
+        }
+      ]
+    },
+    {
+      "id": "7:77",
+      "name": "Textarea",
+      "count": 3,
+      "variants": [
+        {
+          "name": "State=Default",
+          "w": 300,
+          "h": 146
+        },
+        {
+          "name": "State=Error",
+          "w": 300,
+          "h": 146
+        },
+        {
+          "name": "State=Disabled",
+          "w": 300,
+          "h": 146
+        }
+      ]
+    },
+    {
+      "id": "7:93",
+      "name": "Checkbox",
+      "count": 4,
+      "variants": [
+        {
+          "name": "Checked=false, Disabled=false",
+          "w": 181,
+          "h": 20
+        },
+        {
+          "name": "Checked=false, Disabled=true",
+          "w": 181,
+          "h": 20
+        },
+        {
+          "name": "Checked=true, Disabled=false",
+          "w": 181,
+          "h": 20
+        },
+        {
+          "name": "Checked=true, Disabled=true",
+          "w": 181,
+          "h": 20
+        }
+      ]
+    },
+    {
+      "id": "7:101",
+      "name": "Badge",
+      "count": 3,
+      "variants": [
+        {
+          "name": "Tone=Neutral",
+          "w": 46,
+          "h": 19
+        },
+        {
+          "name": "Tone=Accent",
+          "w": 74,
+          "h": 19
+        },
+        {
+          "name": "Tone=Error",
+          "w": 97,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "id": "7:107",
+      "name": "Link",
+      "count": 2,
+      "variants": [
+        {
+          "name": "Tone=Default",
+          "w": 92,
+          "h": 19
+        },
+        {
+          "name": "Tone=Accent",
+          "w": 92,
+          "h": 19
+        }
+      ]
+    }
+  ],
+  "sheet": {
+    "id": "7:3",
+    "w": 1440,
+    "h": 1438,
+    "sections": [
+      {
+        "id": "15:2",
+        "name": "Review / Header",
+        "x": 64,
+        "y": 64,
+        "w": 1312,
+        "h": 108,
+        "rows": []
+      },
+      {
+        "id": "15:3",
+        "name": "Review / Button",
+        "x": 64,
+        "y": 204,
+        "w": 1312,
+        "h": 191,
+        "rows": [
+          {
+            "id": "15:6",
+            "h": 1,
+            "axis": "FIXED",
+            "maxChildBottom": 300
+          }
+        ]
+      },
+      {
+        "id": "15:46",
+        "name": "Review / TextField",
+        "x": 64,
+        "y": 427,
+        "w": 1312,
+        "h": 151,
+        "rows": [
+          {
+            "id": "15:49",
+            "h": 1,
+            "axis": "FIXED",
+            "maxChildBottom": 194
+          }
+        ]
+      },
+      {
+        "id": "15:77",
+        "name": "Review / Textarea",
+        "x": 64,
+        "y": 610,
+        "w": 1312,
+        "h": 151,
+        "rows": [
+          {
+            "id": "15:80",
+            "h": 1,
+            "axis": "FIXED",
+            "maxChildBottom": 246
+          }
+        ]
+      },
+      {
+        "id": "15:108",
+        "name": "Review / Checkbox",
+        "x": 64,
+        "y": 793,
+        "w": 1312,
+        "h": 151,
+        "rows": [
+          {
+            "id": "15:111",
+            "h": 1,
+            "axis": "FIXED",
+            "maxChildBottom": 120
+          }
+        ]
+      },
+      {
+        "id": "15:142",
+        "name": "Review / Badge",
+        "x": 64,
+        "y": 976,
+        "w": 1312,
+        "h": 151,
+        "rows": [
+          {
+            "id": "15:145",
+            "h": 1,
+            "axis": "FIXED",
+            "maxChildBottom": 121
+          }
+        ]
+      },
+      {
+        "id": "15:164",
+        "name": "Review / Link",
+        "x": 64,
+        "y": 1159,
+        "w": 1312,
+        "h": 151,
+        "rows": [
+          {
+            "id": "15:167",
+            "h": 1,
+            "axis": "FIXED",
+            "maxChildBottom": 119
+          }
+        ]
+      },
+      {
+        "id": "15:180",
+        "name": "Review footer",
+        "x": 64,
+        "y": 1342,
+        "w": 1312,
+        "h": 32,
+        "rows": []
+      }
+    ]
+  },
+  "styles": [
+    {
+      "name": "Preview / Caption",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 12
+    },
+    {
+      "name": "Preview / Body / Small",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 14
+    },
+    {
+      "name": "Preview / Body",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Regular",
+        "variationSettings": {
+          "wght": 400
+        }
+      },
+      "size": 16
+    },
+    {
+      "name": "Preview / Heading / Small",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "size": 20
+    },
+    {
+      "name": "Preview / Heading / Medium",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "size": 24
+    },
+    {
+      "name": "Preview / Heading / Large",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "size": 32
+    },
+    {
+      "name": "Preview / Display",
+      "font": {
+        "family": "Noto Sans KR",
+        "style": "Bold",
+        "variationSettings": {
+          "wght": 700
+        }
+      },
+      "size": 40
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "keyboardButtonClicks": 2,
+  "loading": {
+    "disabled": true,
+    "busy": "true",
+    "text": "저장 중 / Saving"
+  },
+  "badge": {
+    "height": 28,
+    "boxSizing": "content-box",
+    "minHeight": "24px"
+  },
+  "coarse": {
+    "coarse": true,
+    "labelHeight": 44
+  },
+  "linkEnter": "http://127.0.0.1:5175/#foundations",
+  "nativePropsJSDOM": {
+    "TextField": {
+      "required": true,
+      "readOnly": true,
+      "value": "preserved"
+    },
+    "Textarea": {
+      "required": true,
+      "readOnly": true,
+      "value": "preserved"
+    }
+  }
+}

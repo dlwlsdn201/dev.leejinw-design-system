@@ -1,0 +1,87 @@
+{
+  "baseline": {
+    "buttonHeight": 25,
+    "inputHeight": 24,
+    "buttonWhiteSpace": "normal",
+    "primaryVar": "",
+    "cssLinks": [
+      null,
+      null
+    ],
+    "buttonClass": "_button_dq2tj_1 _button-primary_dq2tj_30 _button-md_dq2tj_28"
+  },
+  "withTemporaryCss": {
+    "buttonHeight": 40,
+    "inputHeight": 44,
+    "buttonWhiteSpace": "nowrap",
+    "primaryVar": "#0f766e",
+    "cssLinks": [
+      null,
+      null,
+      null
+    ],
+    "buttonClass": "_button_dq2tj_1 _button-primary_dq2tj_30 _button-md_dq2tj_28",
+    "badge": {
+      "height": 24,
+      "boxSizing": "border-box"
+    }
+  },
+  "focus": {
+    "outline": "rgb(10, 92, 85) solid 2px",
+    "offset": "2px"
+  },
+  "normalMotion": "_ds-spin_dq2tj_1",
+  "reducedMotion": "none",
+  "forcedColors": {
+    "active": true,
+    "outline": "rgba(5, 0, 73, 0.8) solid 2px",
+    "appearance": "auto"
+  },
+  "longLabels": [
+    {
+      "text": "프로젝트의 모든 변경 사항을 확인하고 최종 저장하기 위한 매우 긴 버튼 이름입니다",
+      "width": 230,
+      "clientWidth": 228,
+      "scrollWidth": 338,
+      "spanLeft": -64,
+      "spanRight": 384.015625,
+      "viewport": 320,
+      "whiteSpace": "nowrap"
+    },
+    {
+      "text": "Save all project changes and continue to the next configuration step",
+      "width": 230,
+      "clientWidth": 228,
+      "scrollWidth": 334,
+      "spanLeft": -59.984375,
+      "spanRight": 380,
+      "viewport": 320,
+      "whiteSpace": "nowrap"
+    }
+  ],
+  "storybookMetrics": {
+    "checkboxHeight": 20,
+    "labelHeight": 24,
+    "colorScheme": "normal",
+    "accent": "rgb(15, 118, 110)"
+  },
+  "nativeDark": {
+    "colorScheme": "normal",
+    "prefersDark": true
+  },
+  "storybookFocus": {
+    "outline": "rgb(10, 92, 85) solid 2px",
+    "box": {
+      "x": 102.78125,
+      "y": 480,
+      "width": 114.453125,
+      "height": 40,
+      "top": 480,
+      "right": 217.234375,
+      "bottom": 520,
+      "left": 102.78125
+    },
+    "height": 40
+  },
+  "browser": "155.0.8059.82"
+}

@@ -1,0 +1,66 @@
+{
+  "F01": {
+    "before": {
+      "checked": false,
+      "indeterminate": true,
+      "ariaChecked": "mixed"
+    },
+    "after": {
+      "checked": true,
+      "indeterminate": false,
+      "ariaChecked": "mixed"
+    }
+  },
+  "F04": {
+    "TextField": null,
+    "Textarea": null,
+    "Checkbox": null
+  },
+  "F05": {
+    "callsAfterRerender": [
+      "node",
+      "null",
+      "node"
+    ]
+  },
+  "C01": {
+    "attaches": 1,
+    "releasesAfterUnmount": 0,
+    "expectedReleases": 1
+  },
+  "F06": {
+    "errorText": "ErrorFailed after submission",
+    "liveRegions": 0,
+    "describedBy": "_r_6_-error"
+  },
+  "F10": {
+    "unnamedButton": true,
+    "external": {
+      "arrowHidden": "true",
+      "target": "_blank",
+      "textContent": "Docs ↗"
+    }
+  },
+  "F08": {
+    "componentsMismatch": {
+      "generationExit": 0,
+      "validationExit": 0,
+      "output": "10 color contrast pairs passed"
+    },
+    "invalidHexInContrastPair": {
+      "generationExit": 0,
+      "validationExit": 0,
+      "output": "10 color contrast pairs passed"
+    },
+    "missingUnusedAlias": {
+      "generationExit": 0,
+      "validationExit": 0,
+      "output": "10 color contrast pairs passed"
+    },
+    "wrongTypeAlias": {
+      "generationExit": 0,
+      "validationExit": 0,
+      "output": "10 color contrast pairs passed"
+    }
+  }
+}
