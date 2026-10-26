@@ -48,6 +48,9 @@
   --ds-size-badge: 24px;
   --ds-size-textarea-min: 96px;
   --ds-size-spinner: 14px;
+  --ds-size-dialog: 480px;
+  --ds-size-popover: 320px;
+  --ds-size-menu-min: 192px;
   --ds-typography-size-caption: 12px;
   --ds-typography-size-body-sm: 14px;
   --ds-typography-size-body: 16px;
@@ -72,4 +75,9 @@
   --ds-focus-indicator-offset: 2px;
   --ds-opacity-disabled: 0.55;
   --ds-opacity-disabled-input: 0.75;
+  --ds-opacity-overlay: 0.4;
+  --ds-z-index-overlay: 100;
+  --ds-z-index-floating: 110;
+  --ds-z-index-toast: 120;
+  --ds-z-index-tooltip: 130;
 }

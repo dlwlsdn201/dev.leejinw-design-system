@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Badge, Button, Checkbox, Link, Textarea, TextField } from '@dev.leejinw/ui';
 import tokens from '@dev.leejinw/ui/tokens.json';
+import { ExpansionExamples } from './examples/ExpansionExamples';
 
 type Language = 'ko' | 'en';
 
@@ -233,6 +234,7 @@ const App = () => {
             <article className="component-panel"><div className="panel-head"><h3>{copy.textarea}</h3><span>INPUT</span></div><p>{copy.textareaDescription}</p><Textarea label={copy.description} placeholder={copy.descriptionPlaceholder} /></article>
             <article className="component-panel"><div className="panel-head"><h3>{copy.checkbox}</h3><span>SELECTION</span></div><p>{copy.checkboxDescription}</p><Checkbox label={copy.checkboxLabel} hint={copy.checkboxHint} checked={isChecked} onChange={(event) => setIsChecked(event.target.checked)} /></article>
             <article className="component-panel"><div className="panel-head"><h3>{copy.badge}</h3><span>STATUS</span></div><p>{copy.badgeDescription}</p><div className="example-row"><Badge>{copy.badgeNeutral}</Badge><Badge tone="accent">{copy.badgeAccent}</Badge><Badge tone="error">{copy.badgeError}</Badge></div></article>
+            <ExpansionExamples language={language} />
           </div>
         </section>
 

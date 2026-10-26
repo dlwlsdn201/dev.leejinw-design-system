@@ -6,7 +6,7 @@ GitHub 저장소: [dlwlsdn201/dev.leejinw-design-system](https://github.com/dlwl
 
 ## 구성
 
-- `packages/ui`: DTCG 토큰 원본, CSS custom properties, React 컴포넌트 6개
+- `packages/ui`: DTCG 토큰 원본, CSS custom properties, React 컴포넌트 19개
 - `apps/docs`: 한·영 전환이 가능한 카탈로그와 Storybook 상태 문서
 - `apps/next-smoke`: Next.js App Router 소비 환경 확인용 작은 앱
 - `PRD.md`: 기획과 완료 기준
@@ -48,9 +48,17 @@ Figma 연결 환경에는 Pretendard Variable이 없어 텍스트 스타일은 `
 
 ## 배포 상태
 
-현재 패키지는 `private`이며 외부에 게시되지 않았습니다. 이 저장소에서는 `packages/ui`만 향후 npm 설치 대상이고, `apps/docs`와 `apps/next-smoke`는 문서·소비 검증용으로 유지합니다. 공개 전에는 npm의 `@leejinw` 범위에 대한 게시 권한을 확인하고, 패키지 압축물의 CSS·폰트·타입 선언을 별도 프로젝트에서 설치해 검증합니다. 다크 모드와 복합 컴포넌트는 후속 범위입니다.
+현재 패키지는 `private`이며 외부에 게시되지 않았습니다. 이 저장소에서는 `packages/ui`만 향후 npm 설치 대상이고, `apps/docs`와 `apps/next-smoke`는 문서·소비 검증용으로 유지합니다. 공개 전에는 npm의 `@dev.leejinw` 범위에 대한 게시 권한을 확인하고, 패키지 압축물의 CSS·폰트·타입 선언을 별도 프로젝트에서 설치해 검증합니다. 다크 모드, 날짜 입력, 테이블은 후속 범위입니다.
 
-## 검증 기록
+## 초기 검증 기록
 
 - 통과: 토큰 대비 조합 10개, 타입 검사, ESLint, 컴포넌트 테스트 5개, Vite·Next.js·Storybook 빌드, 카탈로그 한·영 전환, Figma 토큰 이름 72개 대조.
 - 추가 수동 확인: 320px 화면, 200% 확대, 전체 키보드 이동 순서와 포커스 잘림. 첫 탭 포커스는 확인했지만 브라우저의 임시 화면 크기 설정이 적용되지 않아 좁은 화면과 확대 상태는 완료로 표시하지 않았습니다.
+
+## 1차 확장 (2026-10-26)
+
+Select·RadioGroup·Switch·Dialog·AlertDialog·DropdownMenu·Popover·Tooltip·Tabs·Alert·Toast·Skeleton·Spinner 13종을 추가했습니다.
+
+- [API와 사용 예시](docs/COMPONENT_EXPANSION.md)
+- [Figma 상태별 시안](https://www.figma.com/design/ifKbIexGO4cYM07mjr15wA?node-id=57-57)
+- 검증: 타입·린트·13개 테스트, UI·카탈로그·Next.js·Storybook 빌드, Chrome KO/EN 320/1440px 주요 동작, 별도 tarball 소비 타입·Vite 빌드 통과. 전체 접근성 인증이나 npm 출시 승인으로 간주하지 않습니다.

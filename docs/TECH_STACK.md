@@ -23,3 +23,10 @@
 | `pnpm test` | 토큰 유효성·대비와 컴포넌트 동작 |
 | `pnpm build` | UI, Vite 문서, Next.js 소비 앱 빌드 |
 | `pnpm storybook:build` | Storybook 정적 빌드 |
+
+## 1차 확장 기반 (2026-10-26)
+
+- `radix-ui@1.8.1`: Select, Switch, Dialog/AlertDialog, DropdownMenu, Popover, Tooltip, Tabs, Toast의 키보드·포커스·ARIA 기반. UI 패키지 dependency이며 라이브러리 번들에서 external로 유지.
+- RadioGroup: 네이티브 fieldset/legend/radio로 브라우저의 선택·키보드·폼 동작 사용.
+- 스타일: 기존 CSS Modules + CSS custom properties 유지. UI 패키지에 번역·라우터·전역 상태 라이브러리 추가 없음.
+- 공개 API와 상태별 표본: [COMPONENT_EXPANSION.md](COMPONENT_EXPANSION.md).

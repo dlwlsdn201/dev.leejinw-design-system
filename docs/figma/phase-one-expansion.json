@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-26",
+  "fileKey": "ifKbIexGO4cYM07mjr15wA",
+  "pageId": "7:2",
+  "reviewId": "57:57",
+  "components": [
+    {
+      "id": "57:93",
+      "name": "Select",
+      "count": 5,
+      "properties": [
+        "Label#60:0",
+        "State"
+      ]
+    },
+    {
+      "id": "57:164",
+      "name": "RadioGroup",
+      "count": 2,
+      "properties": [
+        "Label#60:6",
+        "State"
+      ]
+    },
+    {
+      "id": "57:215",
+      "name": "Switch",
+      "count": 4,
+      "properties": [
+        "Label#60:9",
+        "State"
+      ]
+    },
+    {
+      "id": "57:262",
+      "name": "Dialog",
+      "count": 1,
+      "properties": [
+        "Label#60:14",
+        "State"
+      ]
+    },
+    {
+      "id": "57:300",
+      "name": "AlertDialog",
+      "count": 2,
+      "properties": [
+        "Label#60:16",
+        "State"
+      ]
+    },
+    {
+      "id": "57:334",
+      "name": "DropdownMenu",
+      "count": 1,
+      "properties": [
+        "Label#60:19",
+        "State"
+      ]
+    },
+    {
+      "id": "57:352",
+      "name": "Popover",
+      "count": 1,
+      "properties": [
+        "Label#60:21",
+        "State"
+      ]
+    },
+    {
+      "id": "57:365",
+      "name": "Tooltip",
+      "count": 1,
+      "properties": [
+        "Label#60:23",
+        "State"
+      ]
+    },
+    {
+      "id": "57:392",
+      "name": "Tabs",
+      "count": 2,
+      "properties": [
+        "Label#60:25",
+        "State"
+      ]
+    },
+    {
+      "id": "57:425",
+      "name": "Alert",
+      "count": 2,
+      "properties": [
+        "Info title#63:0",
+        "Error title#63:3",
+        "State"
+      ]
+    },
+    {
+      "id": "57:448",
+      "name": "Toast",
+      "count": 2,
+      "properties": [
+        "Info title#63:6",
+        "Error title#63:9",
+        "State"
+      ]
+    },
+    {
+      "id": "57:470",
+      "name": "Skeleton",
+      "count": 1,
+      "properties": [
+        "Label#60:28",
+        "State"
+      ]
+    },
+    {
+      "id": "57:487",
+      "name": "Spinner",
+      "count": 1,
+      "properties": [
+        "Label#60:30",
+        "State"
+      ]
+    }
+  ],
+  "variants": 25,
+  "checkedContainers": 138,
+  "overflow": 0,
+  "overlap": 0,
+  "pendingIndividualScreenshots": [
+    "Tabs",
+    "Alert",
+    "Skeleton",
+    "Spinner"
+  ],
+  "note": "Figma Starter MCP quota reached. All families checked in full-frame screenshot and structural audit; four individual enlargements remain."
+}

@@ -27,3 +27,9 @@ export const Example = () => (
 | Badge | 짧은 상태 | 상호작용 요소로 쓰지 않음 |
 
 키보드 포커스는 `:focus-visible` 외곽선으로 표시합니다. `aria-describedby`, `aria-invalid`, `aria-busy` 등 상태 속성은 컴포넌트가 제공합니다. 실제 문구와 검증 규칙은 소비 앱이 결정합니다.
+
+## 1차 확장
+
+기존 6종에 Select, RadioGroup, Switch, Dialog, AlertDialog, DropdownMenu, Popover, Tooltip, Tabs, Alert, Toast, Skeleton, Spinner를 추가했습니다. 한영 문구는 소비 앱에서 전달합니다.
+
+API·조합 예시·접근성 계약: [컴포넌트 확장 가이드](https://github.com/dlwlsdn201/dev.leejinw-design-system/blob/main/docs/COMPONENT_EXPANSION.md). 설치 후 `@dev.leejinw/ui/styles.css`를 명시적으로 불러오세요.

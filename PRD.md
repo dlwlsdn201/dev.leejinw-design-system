@@ -131,3 +131,7 @@
 - WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - ARIA Authoring Practices: https://www.w3.org/WAI/ARIA/apg/
 - Storybook React/Vite 문서: https://storybook.js.org/docs/get-started/frameworks/react-vite
+
+## 1차 확장 승인 (2026-10-26)
+
+사용자 승인에 따라 Select, RadioGroup, Switch, Dialog, AlertDialog, DropdownMenu, Popover, Tooltip, Tabs, Alert, Toast, Skeleton, Spinner를 추가한다. 상태·API·검증 범위는 [컴포넌트 확장 문서](docs/COMPONENT_EXPANSION.md)를 따른다. DatePicker·DateRangePicker·Table 및 2차 후보는 후속이다.
