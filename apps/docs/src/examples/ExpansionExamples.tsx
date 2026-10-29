@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import type { SpinnerVariant } from '@dev.leejinw/ui';
 import {
   Alert, AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogTrigger,
   Button, Dialog, DialogClose, DialogContent, DialogTrigger, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,
@@ -59,8 +60,21 @@ export const ToastExample = ({ language = 'ko' }: ExampleProps) => {
 /** Demonstrates decorative skeletons within a named busy region. */
 export const SkeletonExample = ({ language = 'ko' }: ExampleProps) => <div className="form-stack" aria-busy="true" aria-label={text(language, '프로젝트 불러오는 중', 'Loading projects')}><Skeleton /><Skeleton /><Skeleton /><span>{text(language, '프로젝트를 불러오고 있습니다.', 'Loading your projects.')}</span></div>;
 
-/** Demonstrates visible loading text that remains useful without animation. */
-export const SpinnerExample = ({ language = 'ko' }: ExampleProps) => <Spinner label={text(language, '저장 중입니다.', 'Saving changes.')} />;
+const SPINNER_EXAMPLES = [
+  { variant: 'ring', name: 'Ring', ko: '기본 작업 진행 · 가장 익숙한 원형', en: 'General loading · familiar circular motion' },
+  { variant: 'dots', name: 'Dots', ko: '짧은 대기 · 세 점의 작은 움직임', en: 'Short waits · a subtle three-dot sequence' },
+  { variant: 'bars', name: 'Bars', ko: '처리 중 · 높이만 부드럽게 변화', en: 'Processing · a gentle change in height' },
+] as const satisfies readonly { variant: SpinnerVariant; name: string; ko: string; en: string }[];
+
+/** Compares equally sized monochrome indicators with visible loading text. */
+export const SpinnerExample = ({ language = 'ko' }: ExampleProps) => <div className="spinner-examples">
+  {SPINNER_EXAMPLES.map(({ variant, name, ko, en }) => <div className="spinner-example" key={variant}>
+    <div className="spinner-example-heading"><strong>{name}</strong>{variant === 'ring' && <span>{text(language, '기본', 'Default')}</span>}</div>
+    <div className="spinner-example-preview"><Spinner variant={variant} label={text(language, '불러오는 중', 'Loading')} /></div>
+    <p>{language === 'ko' ? ko : en}</p>
+  </div>)}
+  <p className="spinner-motion-note">{text(language, '모션 감소 설정에서는 움직임을 멈추고 로딩 문구를 유지합니다.', 'Reduced motion stops the animation while keeping the loading text visible.')}</p>
+</div>;
 
 const EXAMPLES = [
   { name: 'Select', ko: '선택 · 오류 · 사용 불가', en: 'Selection · invalid · disabled', Demo: SelectExample },
@@ -75,7 +89,7 @@ const EXAMPLES = [
   { name: 'Alert', ko: '화면에 유지되는 안내 · 오류', en: 'Persistent information · error', Demo: AlertExample },
   { name: 'Toast', ko: '일시 알림 · 닫기 · 자동 닫기', en: 'Transient message · dismiss · auto-dismiss', Demo: ToastExample },
   { name: 'Skeleton', ko: '콘텐츠 로딩 · 장식 표본', en: 'Content loading · decorative geometry', Demo: SkeletonExample },
-  { name: 'Spinner', ko: '작업 진행 · 상태 설명', en: 'In progress · status text', Demo: SpinnerExample },
+  { name: 'Spinner', ko: '단색 · 작은 움직임 · 세 가지 디자인', en: 'Monochrome · restrained motion · three variants', Demo: SpinnerExample },
 ] as const;
 
 /** Shows interactive examples of the phase-one component expansion. */

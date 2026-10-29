@@ -105,3 +105,21 @@ Figma는 13개 세트·25개 variant를 추가한다. Label 또는 상태별 Tit
 - 전체 프레임 및 Select·Switch·Dialog·AlertDialog·DropdownMenu·RadioGroup·Popover·Tooltip·Toast의 개별 이미지를 확인했다.
 - Tabs·Alert·Skeleton·Spinner는 전체 프레임 이미지와 구조 검사로 확인했다. 마지막 개별 확대 이미지 요청은 Figma Starter MCP 호출 한도에 도달해 가져오지 못했다. 개별 확대 최종 검토는 남아 있다.
 - Figma 글꼴 차이와 위 이미지 조회 제한은 코드 브라우저 검증의 통과 여부와 구분한다.
+
+## Spinner 디자인 확장 (2026-10-29)
+
+`variant?: 'ring' | 'dots' | 'bars'`를 지원한다. 기본은 기존 ring이다. variant를 생략한 기존 사용 코드도 유지된다.
+
+```tsx
+<Spinner label="불러오는 중" />
+<Spinner variant="dots" label="응답 대기 중" />
+<Spinner variant="bars" label="처리 중" />
+```
+
+세 유형 모두 currentColor를 사용하며 텍스트와 아이콘이 한 개의 status를 구성한다. 기하학적 표시는 aria-hidden이다. 점은 최대 2px만 움직이고 막대는 제자리에서 높이만 변화한다. ring은 기존 회전 주기 0.7초, dots/bars는 기존 duration.spinner 토큰의 두 배(1.4초) 주기를 사용한다. 점/막대의 위상은 해당 토큰으로 계산한다. reduced-motion에서는 모든 움직임을 멈추고 로딩 문구를 유지한다. 실제 진행률을 나타내는 컴포넌트는 아니다.
+
+Figma의 기존 Spinner 세트 `57:487`에 Variant 축을 추가했다. Ring `57:482`의 ID는 유지하고 Dots `73:213`, Bars `73:223`을 추가해 전체 variant는 27개다. 검토 카드 `57:488`에서 세 유형을 비교할 수 있다. 정적 대표 프레임이며 실제 모션은 카탈로그와 Storybook에서 검토한다. 2026-10-29 Spinner의 개별 확대 이미지·셋 소유권·variant 옵션·잘림 검토를 완료했다. 이전 단계의 Tabs·Alert·Skeleton 개별 확대 검토는 별도로 남아 있다.
+
+검증: 타입·린트·13개 기존 동작 테스트·전체 빌드·Storybook 빌드 통과. Chrome KO/EN × 320/768/1440px에서 세 유형의 실제 움직임·가로 넘침 없음·상태 문구를 확인하고, reduced-motion에서 모든 유형이 정지함을 확인했다.
+
+모션 감소 처리 참고: [W3C prefers-reduced-motion 기법 C39](https://www.w3.org/WAI/WCAG22/Techniques/css/C39) (확인일: 2026-10-29).

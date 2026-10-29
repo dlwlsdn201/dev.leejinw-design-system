@@ -56,8 +56,18 @@
 .toast[data-swipe='end'] { transform: translateX(var(--radix-toast-swipe-end-x)); }
 .skeleton { min-height: var(--ds-typography-line-height-body); width: 100%; border-radius: var(--ds-radius-sm); background: var(--ds-color-border-subtle); }
 .spinnerStatus { display: inline-flex; align-items: center; gap: var(--ds-space-2); }
+/* A stable slot keeps the label aligned when switching indicator types. */
+.spinnerVisual { display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--ds-space-6); height: var(--ds-size-spinner); }
+.spinnerSequence { display: inline-flex; align-items: center; justify-content: center; gap: var(--ds-space-micro); height: var(--ds-size-spinner); }
+.spinnerDot { width: var(--ds-space-1); height: var(--ds-space-1); border-radius: 50%; background: currentColor; animation: qp-spinner-dots calc(var(--ds-duration-spinner) * 2) ease-in-out infinite; }
+.spinnerBar { width: var(--ds-space-micro); height: var(--ds-size-spinner); border-radius: var(--ds-radius-sm); background: currentColor; transform: scaleY(.45); animation: qp-spinner-bars calc(var(--ds-duration-spinner) * 2) ease-in-out infinite; }
+.spinnerDot:nth-child(2), .spinnerBar:nth-child(2) { animation-delay: calc(var(--ds-duration-spinner) / -3); }
+.spinnerDot:nth-child(3), .spinnerBar:nth-child(3) { animation-delay: calc(var(--ds-duration-spinner) / -3 * 2); }
 .spinner { box-sizing: border-box; display: inline-block; flex: none; width: var(--ds-size-spinner); height: var(--ds-size-spinner); border: var(--ds-stroke-strong) solid currentColor; border-right-color: transparent; border-radius: 50%; animation: qp-spin var(--ds-duration-spinner) linear infinite; }
 .selectTrigger:focus-visible, .radio:focus-visible, .switch:focus-visible, .close:focus-visible, .tab:focus-visible, .tabPanel:focus-visible, .dialog:focus-visible, .popover:focus-visible, .toast:focus-visible, .toastViewport:focus-visible { outline: var(--ds-focus-indicator-width) solid var(--ds-color-focus-ring); outline-offset: var(--ds-focus-indicator-offset); }
-@media (prefers-reduced-motion: reduce) { .switchThumb { transition: none; } .spinner { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .switchThumb { transition: none; } .spinner, .spinnerDot, .spinnerBar { animation: none; } .spinnerBar { transform: none; } }
 @media (forced-colors: active) { .radioIndicator, .switch[data-state='checked'] .switchThumb { background: Highlight; } .switch[data-state='checked'] { border-color: Highlight; } .tab[data-state='active'] { border-color: Highlight; } .skeleton { border: var(--ds-stroke-default) solid CanvasText; } }
 @keyframes qp-spin { to { transform: rotate(360deg); } }
+
+@keyframes qp-spinner-dots { 0%, 70%, 100% { opacity: .45; transform: translateY(0); } 35% { opacity: 1; transform: translateY(calc(-1 * var(--ds-space-micro))); } }
+@keyframes qp-spinner-bars { 0%, 70%, 100% { transform: scaleY(.45); } 35% { transform: scaleY(1); } }

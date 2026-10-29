@@ -117,22 +117,37 @@
     {
       "id": "57:487",
       "name": "Spinner",
-      "count": 1,
+      "count": 3,
       "properties": [
         "Label#60:30",
+        "Variant",
         "State"
+      ],
+      "variants": [
+        {
+          "name": "Ring",
+          "id": "57:482"
+        },
+        {
+          "name": "Dots",
+          "id": "73:213"
+        },
+        {
+          "name": "Bars",
+          "id": "73:223"
+        }
       ]
     }
   ],
-  "variants": 25,
+  "variants": 27,
   "checkedContainers": 138,
   "overflow": 0,
   "overlap": 0,
   "pendingIndividualScreenshots": [
     "Tabs",
     "Alert",
-    "Skeleton",
-    "Spinner"
+    "Skeleton"
   ],
-  "note": "Figma Starter MCP quota reached. All families checked in full-frame screenshot and structural audit; four individual enlargements remain."
+  "note": "Baseline whole-library structural audit: 2026-10-26. Spinner variants and individual review frame verified on 2026-10-29, no clipping. Tabs, Alert and Skeleton individual enlargements from phase one remain pending.",
+  "updatedAt": "2026-10-29"
 }

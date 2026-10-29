@@ -1,8 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Spinner } from '@dev.leejinw/ui';
 import { SpinnerExample } from '../examples/ExpansionExamples';
 
-const meta = { title: 'Components/Spinner', component: SpinnerExample, tags: ['autodocs'], args: { language: 'ko' }, argTypes: { language: { control: 'select', options: ['ko', 'en'] } } } satisfies Meta<typeof SpinnerExample>;
+const meta = {
+  title: 'Components/Spinner', component: Spinner, tags: ['autodocs'],
+  args: { label: '불러오는 중', variant: 'ring' },
+  argTypes: { variant: { control: 'select', options: ['ring', 'dots', 'bars'] } },
+} satisfies Meta<typeof Spinner>;
 export default meta;
 type Story = StoryObj<typeof meta>;
-export const Korean: Story = {};
-export const English: Story = { args: { language: 'en' } };
+export const Ring: Story = {};
+export const Dots: Story = { args: { variant: 'dots' } };
+export const Bars: Story = { args: { variant: 'bars' } };
+export const Korean: Story = { render: () => <SpinnerExample language="ko" /> };
+export const English: Story = { render: () => <SpinnerExample language="en" /> };
