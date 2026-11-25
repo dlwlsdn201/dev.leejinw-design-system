@@ -27,7 +27,7 @@ export const Select = ({ label, options, placeholder, hint, error, id, className
     <label className={field.fieldLabel} htmlFor={ids.inputId}>{label}{props.required && <span className={field.required} aria-hidden="true"> *</span>}</label>
     <Primitive.Root {...props}>
       <Primitive.Trigger ref={ref} id={ids.inputId} className={styles.selectTrigger} aria-describedby={ids.descriptionIds} aria-invalid={error ? true : invalid}>
-        <Primitive.Value placeholder={placeholder} /><Primitive.Icon aria-hidden="true">⌄</Primitive.Icon>
+        <Primitive.Value placeholder={placeholder} /><Primitive.Icon className={styles.selectIcon} aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4 4.5-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></Primitive.Icon>
       </Primitive.Trigger>
       <Primitive.Portal><Primitive.Content position="popper" sideOffset={OVERLAY_CONFIG.sideOffset} collisionPadding={OVERLAY_CONFIG.collisionPadding} className={styles.selectContent}>
         <Primitive.ScrollUpButton className={styles.scrollButton} aria-hidden="true">⌃</Primitive.ScrollUpButton>

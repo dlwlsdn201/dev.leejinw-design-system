@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design system · motion directions</title>
+  <link rel="stylesheet" href="../../packages/ui/src/tokens.css" />
+  <style>
+    :root { font-family: 'Pretendard Variable', system-ui, sans-serif; color: var(--ds-color-text-primary); background: var(--ds-color-surface-canvas); }
+    * { box-sizing: border-box; }
+    body { max-width: 1180px; margin: auto; padding: var(--ds-space-8); }
+    h1 { margin: 0 0 var(--ds-space-2); font-size: var(--ds-typography-size-heading-lg); }
+    .intro { margin: 0 0 var(--ds-space-8); color: var(--ds-color-text-secondary); line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ds-space-4); }
+    .card { min-width: 0; padding: var(--ds-space-6); border: var(--ds-stroke-default) solid var(--ds-color-border-subtle); border-radius: var(--ds-radius-lg); background: var(--ds-color-surface-default); }
+    .card h2 { margin: 0 0 var(--ds-space-2); font-size: var(--ds-typography-size-heading-sm); }
+    .card p { min-height: 4.5em; color: var(--ds-color-text-secondary); font-size: var(--ds-typography-size-body-sm); line-height: 1.5; }
+    .stage { display: flex; flex-direction: column; gap: var(--ds-space-3); min-height: 190px; padding: var(--ds-space-4); border-radius: var(--ds-radius-md); background: var(--ds-color-surface-canvas); }
+    button { font: inherit; cursor: pointer; }
+    .action, .select { min-height: var(--ds-size-control-touch); border-radius: var(--ds-radius-md); font-size: var(--ds-typography-size-body-sm); }
+    .action { border: var(--ds-stroke-default) solid var(--ds-color-action-default); background: var(--ds-color-action-default); color: var(--ds-color-text-on-accent); font-weight: var(--ds-typography-weight-semibold); }
+    .select { display: flex; align-items: center; justify-content: space-between; padding: 0 var(--ds-space-4); border: var(--ds-stroke-default) solid var(--ds-color-border-control); background: var(--ds-color-surface-default); color: var(--ds-color-text-primary); }
+    .select svg { width: var(--ds-space-4); height: var(--ds-space-4); flex: none; }
+    .status { display: flex; align-items: center; min-height: var(--ds-size-control-md); padding: var(--ds-space-2) var(--ds-space-3); border-radius: var(--ds-radius-sm); background: var(--ds-color-surface-accent-subtle); color: var(--ds-color-text-accent); font-size: var(--ds-typography-size-body-sm); opacity: 0; }
+    .is-active .status { opacity: 1; }
+    .a .action, .a .select, .a .status { transition: background-color var(--ds-duration-fast), border-color var(--ds-duration-fast), opacity var(--ds-duration-fast); }
+    .a .action:hover, .a.is-active .action { background: var(--ds-color-action-hover); }
+    .a .select:hover, .a.is-active .select { border-color: var(--ds-color-action-default); }
+    .b .action, .b .select, .b .status, .b svg { transition: transform var(--ds-duration-normal) ease-out, opacity var(--ds-duration-normal) ease-out, background-color var(--ds-duration-fast), border-color var(--ds-duration-fast); }
+    .b .action:hover { transform: translateY(calc(-1 * var(--ds-space-micro))); background: var(--ds-color-action-hover); }
+    .b.is-active .select { border-color: var(--ds-color-action-default); }
+    .b.is-active svg { transform: rotate(180deg); }
+    .b .status { transform: translateY(var(--ds-space-1)); }
+    .b.is-active .status { transform: translateY(0); }
+    .c .action, .c .select, .c .status, .c svg { transition: transform var(--ds-duration-normal) cubic-bezier(.2,.8,.2,1), opacity var(--ds-duration-normal), background-color var(--ds-duration-fast), border-color var(--ds-duration-fast); }
+    .c .action:hover { transform: scale(1.025); background: var(--ds-color-action-hover); }
+    .c .action:active { transform: scale(.975); }
+    .c.is-active .select { border-color: var(--ds-color-action-default); }
+    .c.is-active svg { transform: rotate(180deg); }
+    .c .status { transform: translateY(var(--ds-space-2)) scale(.98); }
+    .c.is-active .status { transform: translateY(0) scale(1); }
+    button:focus-visible { outline: var(--ds-focus-indicator-width) solid var(--ds-color-focus-ring); outline-offset: var(--ds-focus-indicator-offset); }
+    .note { margin-top: var(--ds-space-6); font-size: var(--ds-typography-size-body-sm); color: var(--ds-color-text-secondary); }
+    @media (max-width: 760px) { body { padding: var(--ds-space-4); } .grid { grid-template-columns: 1fr; } .card p { min-height: 0; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition-duration: 0s !important; animation: none !important; } }
+  </style>
+</head>
+<body>
+  <h1>모션 방향 비교</h1>
+  <p class="intro">각 카드의 버튼과 Select를 눌러 상태 변화를 비교하세요. 제품 적용 전 검토용 시안입니다.</p>
+  <main class="grid">
+    <section class="card a"><h2>A · Quiet</h2><p>색과 명도만 짧게 바뀝니다. 가장 절제되어 있지만 움직임의 존재감은 약합니다.</p><div class="stage"><button class="action" type="button">버튼에 마우스를 올려보세요</button><button class="select" type="button" aria-pressed="false">옵션 선택 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="status" role="status">상태가 변경되었습니다</div></div></section>
+    <section class="card b"><h2>B · Guided</h2><p>Chevron 회전과 작은 등장 이동으로 상태를 읽기 쉽게 만듭니다. 기본 방향으로 권장합니다.</p><div class="stage"><button class="action" type="button">버튼에 마우스를 올려보세요</button><button class="select" type="button" aria-pressed="false">옵션 선택 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="status" role="status">상태가 변경되었습니다</div></div></section>
+    <section class="card c"><h2>C · Lively</h2><p>버튼 크기 반응과 더 큰 등장 이동을 추가합니다. 개성은 강하지만 반복 사용 시 주의가 필요합니다.</p><div class="stage"><button class="action" type="button">버튼에 마우스를 올려보세요</button><button class="select" type="button" aria-pressed="false">옵션 선택 <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m3.5 6 4.5 4 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="status" role="status">상태가 변경되었습니다</div></div></section>
+  </main>
+  <p class="note">모든 전환은 기존 duration 토큰(150/200ms)을 사용하고, 시스템의 움직임 줄이기 설정을 따릅니다.</p>
+  <script>
+    document.querySelectorAll('.card').forEach((card) => {
+      card.querySelector('.select').addEventListener('click', (event) => {
+        const isActive = card.classList.toggle('is-active');
+        event.currentTarget.setAttribute('aria-pressed', String(isActive));
+      });
+    });
+  </script>
+</body>
+</html>

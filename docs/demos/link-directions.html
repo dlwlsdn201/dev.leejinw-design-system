@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Link · Motion studies</title>
+<link rel="stylesheet" href="../../packages/ui/src/tokens.css" />
+<link rel="stylesheet" href="../../packages/ui/src/assets/fonts.css" />
+<style>
+* { box-sizing: border-box; }
+body { margin: auto; max-width: 1180px; padding: var(--ds-space-8); font-family: var(--ds-font-family-base), sans-serif; color: var(--ds-color-text-primary); background: var(--ds-color-surface-canvas); line-height: 1.7; }
+h1 { font-size: var(--ds-typography-size-heading-lg); margin: var(--ds-space-2) 0; line-height: 1.3; }
+.eyebrow { color: var(--ds-color-text-accent); font-size: var(--ds-typography-size-caption); letter-spacing: .12em; font-weight: var(--ds-typography-weight-semibold); }
+.intro { color: var(--ds-color-text-secondary); margin: 0 0 var(--ds-space-8); }
+.grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--ds-space-4); }
+article { min-width: 0; padding: var(--ds-space-6); background: var(--ds-color-surface-default); border: var(--ds-stroke-default) solid var(--ds-color-border-subtle); border-radius: var(--ds-radius-lg); }
+h2 { font-size: var(--ds-typography-size-heading-sm); margin: var(--ds-space-2) 0; }
+.description { color: var(--ds-color-text-secondary); font-size: var(--ds-typography-size-body-sm); min-height: 5.1em; margin: 0 0 var(--ds-space-6); }
+.sample { padding-block: var(--ds-space-4); border-top: var(--ds-stroke-default) solid var(--ds-color-border-subtle); }
+.label { display: block; margin-bottom: var(--ds-space-3); color: var(--ds-color-text-secondary); font-size: var(--ds-typography-size-caption); }
+a { color: var(--ds-color-text-accent); text-decoration-line: underline; text-decoration-thickness: var(--ds-stroke-default); text-underline-offset: var(--ds-space-1); border-radius: var(--ds-radius-sm); cursor: pointer; box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) transparent, 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) transparent; transition: box-shadow var(--ds-duration-fast); }
+a:focus-visible { outline: var(--ds-focus-indicator-width) solid transparent; box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) color-mix(in srgb,var(--ds-color-focus-ring) calc(var(--ds-opacity-disabled) * 100%),transparent), 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) var(--ds-color-surface-accent-subtle); }
+/* Each inline fragment paints its own effect, including wrapped text. */
+.flow { background-image: linear-gradient(var(--ds-color-text-accent),var(--ds-color-text-accent)); background-repeat: no-repeat; background-size: 0 var(--ds-stroke-strong); background-position: right bottom; transition: background-size var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.flow:hover, .flow:focus-visible { background-size: 100% var(--ds-stroke-strong); background-position: left bottom; }
+.marker { background-image: linear-gradient(var(--ds-color-surface-accent-subtle),var(--ds-color-surface-accent-subtle)); background-repeat: no-repeat; background-size: 100% var(--ds-space-micro); background-position: left bottom; transition: background-size var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast); box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.marker:hover, .marker:focus-visible { background-size: 100% 100%; }
+.direction { text-decoration: none; }
+.direction .text { text-decoration: underline; text-underline-offset: var(--ds-space-1); text-decoration-thickness: var(--ds-stroke-default); transition: text-underline-offset var(--ds-duration-normal) ease-out; }
+.direction .arrow { display: inline-block; transition: translate var(--ds-duration-normal) ease-out; }
+.direction:hover .text, .direction:focus-visible .text { text-underline-offset: var(--ds-space-micro); }
+.direction:hover .arrow, .direction:focus-visible .arrow { translate: var(--ds-space-micro) 0; }
+.direction.external:hover .arrow, .direction.external:focus-visible .arrow { translate: var(--ds-space-micro) calc(-1 * var(--ds-space-micro)); }
+footer { margin-top: var(--ds-space-6); color: var(--ds-color-text-secondary); font-size: var(--ds-typography-size-body-sm); }
+#feedback { min-height: var(--ds-size-control-md); color: var(--ds-color-text-accent); }
+@media(max-width:760px) { body { padding: var(--ds-space-4); } .grid { grid-template-columns: 1fr; } .description { min-height: 0; } }
+@media(prefers-reduced-motion:reduce) { a, .direction .text, .direction .arrow { transition: none; } .direction:hover .arrow, .direction:focus-visible .arrow { translate: none; } }
+@media(forced-colors:active) { a:focus-visible { outline-color: Highlight; box-shadow: none; } a:hover, a:focus-visible { text-decoration-thickness: var(--ds-stroke-strong); } }
+</style>
+</head>
+<body>
+<header><div class="eyebrow">INTERACTION STUDIES / 03</div><h1>링크의 작은 개성</h1><p class="intro">마우스를 올리거나 Tab 키로 이동하세요. 클릭하면 이 화면에서 반응만 확인할 수 있습니다.</p></header>
+<main class="grid">
+<article><div class="eyebrow">A / FLOW</div><h2>흐르는 밑줄</h2><p class="description">진한 밑줄이 왼쪽에서 들어오고 오른쪽으로 빠집니다. 본문에서도 부담이 적은 방향입니다.</p><div class="sample"><span class="label">기본 링크</span><a class="flow" href="#feedback">사용 가이드 읽기</a></div><div class="sample"><span class="label">외부 링크</span><a class="flow" href="#feedback">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a></div><div class="sample"><span class="label">여러 줄 링크</span>더 자세한 내용은 <a class="flow" href="#feedback">접근성과 인터랙션을 함께 고려한 컴포넌트 디자인 가이드</a>에서 확인하세요.</div></article>
+<article><div class="eyebrow">B / MARKER · 추천</div><h2>형광펜 스윕</h2><p class="description">옅은 녹색 강조선이 글자 뒤로 차오릅니다. 위치 이동 없이 포트폴리오의 개성을 더합니다.</p><div class="sample"><span class="label">기본 링크</span><a class="marker" href="#feedback">사용 가이드 읽기</a></div><div class="sample"><span class="label">외부 링크</span><a class="marker" href="#feedback">프로젝트 살펴보기 <span aria-hidden="true">↗</span></a></div><div class="sample"><span class="label">여러 줄 링크</span>더 자세한 내용은 <a class="marker" href="#feedback">접근성과 인터랙션을 함께 고려한 컴포넌트 디자인 가이드</a>에서 확인하세요.</div></article>
+<article><div class="eyebrow">C / DIRECTION</div><h2>방향 힌트</h2><p class="description">밑줄 간격이 좁아지고 화살표가 이동 방향으로 움직입니다. 탐색을 유도하는 링크에 어울립니다.</p><div class="sample"><span class="label">기본 링크</span><a class="direction" href="#feedback"><span class="text">사용 가이드 읽기</span> <span class="arrow" aria-hidden="true">→</span></a></div><div class="sample"><span class="label">외부 링크</span><a class="direction external" href="#feedback"><span class="text">프로젝트 살펴보기</span> <span class="arrow" aria-hidden="true">↗</span></a></div><div class="sample"><span class="label">여러 줄 링크</span>더 자세한 내용은 <a class="direction" href="#feedback"><span class="text">접근성과 인터랙션을 함께 고려한 컴포넌트 디자인 가이드</span> <span class="arrow" aria-hidden="true">→</span></a>에서 확인하세요.</div></article>
+</main>
+<footer>150~200ms 전환 · 기존 포커스 shadow 유지 · 시스템의 움직임 줄이기 설정 반영<div id="feedback" role="status" aria-live="polite"></div></footer>
+<script>
+document.querySelectorAll('a').forEach((link) => link.addEventListener('click', (event) => { event.preventDefault(); document.querySelector('#feedback').textContent = `${link.closest('article').querySelector('h2').textContent} · 링크 클릭을 확인했습니다.`; }));
+</script>
+</body>
+</html>

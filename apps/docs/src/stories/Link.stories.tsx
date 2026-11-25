@@ -15,3 +15,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {};
 export const Accent: Story = { args: { variant: 'accent' } };
 export const External: Story = { args: { href: 'https://www.w3.org/WAI/ARIA/apg/', isExternal: true, children: '접근성 지침 / Accessibility guide' } };
+
+export const Multiline: Story = {
+  args: { children: '접근성과 인터랙션을 함께 고려한 컴포넌트 디자인 가이드 / Component design for accessible interactions' },
+  decorators: [(Story) => <div style={{ maxWidth: 'var(--ds-size-menu-min)', lineHeight: 'var(--ds-typography-line-height-body)' }}><Story /></div>],
+};
