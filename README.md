@@ -31,6 +31,37 @@ pnpm build
 pnpm storybook:build
 ```
 
+## 소비 프로젝트에서 사용
+
+공개 패키지 [`@dev.leejinw/ui`](https://www.npmjs.com/package/@dev.leejinw/ui)는 React 19와 React DOM 19를 사용하는 앱에서 설치합니다. 패키지 버전은 소비 프로젝트의 lockfile로 고정하고, 업데이트할 때 컴포넌트 상태와 화면을 확인하세요.
+
+```sh
+pnpm add @dev.leejinw/ui
+```
+
+스타일은 JavaScript와 별도 배포됩니다. 앱의 진입점에서 `styles.css`를 **한 번** 불러와야 토큰과 컴포넌트 스타일이 적용됩니다. Pretendard Variable을 사용할 때만 `fonts.css`를 추가하세요. 폰트를 불러오지 않으면 소비 앱에서 원하는 글꼴을 지정할 수 있습니다.
+
+```tsx
+// Vite: src/main.tsx, Next.js App Router: src/app/layout.tsx
+import '@dev.leejinw/ui/styles.css';
+import '@dev.leejinw/ui/fonts.css'; // Pretendard를 사용할 때만
+```
+
+```tsx
+import { Button, TextField } from '@dev.leejinw/ui';
+
+export const ProjectForm = () => (
+  <form>
+    <TextField label="프로젝트 이름" name="projectName" required />
+    <Button type="submit">저장</Button>
+  </form>
+);
+```
+
+Next.js에서는 위 스타일 import를 루트 레이아웃에 두고, 이벤트 핸들러나 상태를 사용하는 화면은 소비 앱의 Client Component에서 조합합니다. UI 패키지는 라우터·폼 라이브러리·번역 문자열을 제공하지 않으므로 해당 로직과 문구는 소비 앱에서 관리합니다. 패키지 내부 파일을 직접 import하지 말고 공개 경로인 `@dev.leejinw/ui`, `@dev.leejinw/ui/styles.css`, `@dev.leejinw/ui/fonts.css`, `@dev.leejinw/ui/tokens.json`을 사용하세요.
+
+컴포넌트별 API와 조합 예시는 [패키지 가이드](packages/ui/README.md)와 [확장 컴포넌트 가이드](docs/COMPONENT_EXPANSION.md)를 참고하세요.
+
 ## 토큰 변경 흐름
 
 1. `packages/ui/tokens/tokens.json`에서 값을 수정합니다. 이 파일이 토큰의 단일 원본입니다.
@@ -48,7 +79,7 @@ Figma 연결 환경에는 Pretendard Variable이 없어 텍스트 스타일은 `
 
 ## 배포 상태
 
-현재 패키지는 `private`이며 외부에 게시되지 않았습니다. 이 저장소에서는 `packages/ui`만 향후 npm 설치 대상이고, `apps/docs`와 `apps/next-smoke`는 문서·소비 검증용으로 유지합니다. 공개 전에는 npm의 `@dev.leejinw` 범위에 대한 게시 권한을 확인하고, 패키지 압축물의 CSS·폰트·타입 선언을 별도 프로젝트에서 설치해 검증합니다. 다크 모드, 날짜 입력, 테이블은 후속 범위입니다.
+`packages/ui`의 `@dev.leejinw/ui@0.1.0`을 npm에 공개 게시했습니다. 인증 없는 별도 프로젝트에서 설치하고 CSS·폰트·타입 선언·라이선스 포함을 확인했습니다. `apps/docs`와 `apps/next-smoke`는 문서·소비 검증용입니다. 다크 모드, 날짜 입력, 테이블은 후속 범위입니다.
 
 ## 초기 검증 기록
 

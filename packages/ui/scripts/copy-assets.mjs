@@ -11,7 +11,7 @@ await Promise.all(['fonts.css', 'PretendardVariable.woff2', 'OFL.txt'].map((file
   copyFile(resolve(sourceDir, fileName), resolve(outputDir, fileName))
 )));
 
-// Vite extracts styles.css into style.css; keep the emitted declaration aligned.
+// Consumers load CSS explicitly; declarations must not require CSS module types.
 const declarationPath = resolve(outputDir, 'index.d.ts');
 const declaration = await readFile(declarationPath, 'utf8');
-await writeFile(declarationPath, declaration.replace("import './styles.css';", "import './style.css';"));
+await writeFile(declarationPath, declaration.replace("import './styles.css';\n", ''));

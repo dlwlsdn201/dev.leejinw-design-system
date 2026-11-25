@@ -1,7 +1,9 @@
 {
   "name": "@dev.leejinw/ui",
   "version": "0.1.0",
-  "private": true,
+  "description": "Light-mode React UI components and design tokens for personal projects",
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
   "sideEffects": ["**/*.css"],
   "type": "module",
   "repository": {
@@ -9,7 +11,7 @@
     "url": "git+https://github.com/dlwlsdn201/dev.leejinw-design-system.git",
     "directory": "packages/ui"
   },
-  "files": ["dist", "tokens", "README.md"],
+  "files": ["dist", "tokens", "README.md", "LICENSE"],
   "exports": {
     ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
     "./styles.css": "./dist/style.css",

@@ -2,6 +2,14 @@
 
 React 19용 기본 UI 컴포넌트입니다. 앱의 라우터, 폼 라이브러리, 상태 관리에 의존하지 않습니다.
 
+## 설치
+
+```sh
+pnpm add @dev.leejinw/ui
+```
+
+React 19와 React DOM 19를 사용하는 앱에서 설치합니다. 앱의 진입점 또는 루트 레이아웃에서 스타일을 한 번 불러오세요.
+
 ```tsx
 import '@dev.leejinw/ui/styles.css';
 import '@dev.leejinw/ui/fonts.css';
