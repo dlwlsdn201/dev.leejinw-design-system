@@ -156,7 +156,7 @@
   .button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { outline-color: Highlight; box-shadow: none; }
 }
 
-.button, .link, .input, .textarea, .checkbox { box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) transparent, 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) transparent; }
-.button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) color-mix(in srgb, var(--ds-color-focus-ring) calc(var(--ds-opacity-disabled) * 100%), transparent), 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) var(--ds-color-surface-accent-subtle); }
+.button, .link, .input, .textarea, .checkbox { box-shadow: 0 0 var(--ds-space-2) var(--ds-space-1) transparent, 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) transparent; }
+.button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { box-shadow: 0 0 var(--ds-space-2) var(--ds-space-1) var(--ds-color-focus-ring), 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) var(--ds-color-surface-accent-subtle); }
 @media (prefers-reduced-motion: reduce) { .button, .link, .input, .textarea, .checkbox { transition: none; } }
 @media (forced-colors: active) { .button, .link, .input, .textarea, .checkbox, .button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { box-shadow: none; } }
