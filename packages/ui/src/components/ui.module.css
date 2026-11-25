@@ -20,7 +20,7 @@
   font-weight: var(--ds-typography-weight-semibold);
   line-height: var(--ds-typography-line-height-body-sm);
   white-space: nowrap;
-  transition: background-color var(--ds-duration-fast), border-color var(--ds-duration-fast);
+  transition: background-color var(--ds-duration-fast), border-color var(--ds-duration-fast), translate var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast) ease-out;
   cursor: pointer;
 }
 
@@ -33,6 +33,8 @@
 .button-secondary:hover:not(:disabled) { background: var(--ds-color-surface-accent-subtle); }
 .button-ghost { background: transparent; color: var(--ds-color-text-accent); }
 .button-ghost:hover:not(:disabled) { background: var(--ds-color-surface-accent-subtle); }
+.button:hover:not(:disabled) { translate: 0 calc(-1 * var(--ds-space-micro)); }
+.button:active:not(:disabled) { translate: 0; }
 .button:disabled { cursor: not-allowed; opacity: var(--ds-opacity-disabled); }
 .buttonIcon { display: inline-flex; flex: none; }
 
@@ -46,6 +48,8 @@
 }
 
 .link { color: var(--ds-color-text-primary); text-decoration: underline; text-underline-offset: 3px; }
+.link { transition: color var(--ds-duration-fast), box-shadow var(--ds-duration-fast) ease-out; }
+.link:hover { color: var(--ds-color-text-accent); }
 .link-accent { color: var(--ds-color-text-accent); }
 .link:hover { text-decoration-thickness: 2px; }
 
@@ -65,6 +69,7 @@
   font-size: var(--ds-typography-size-body);
   line-height: var(--ds-typography-line-height-body);
 }
+.input, .textarea { transition: border-color var(--ds-duration-fast), background-color var(--ds-duration-fast), box-shadow var(--ds-duration-fast) ease-out; }
 .input { min-height: var(--ds-size-control-touch); padding-block: var(--ds-space-2); }
 .textarea { min-height: var(--ds-size-textarea-min); resize: vertical; }
 .input::placeholder,
@@ -77,6 +82,34 @@
 .fieldError { color: var(--ds-color-text-error); font-size: var(--ds-typography-size-body-sm); line-height: var(--ds-typography-line-height-body-sm); }
 .checkboxLabel { display: inline-flex; align-items: flex-start; gap: var(--ds-space-3); width: fit-content; font-size: var(--ds-typography-size-body); line-height: var(--ds-typography-line-height-body); }
 .checkbox { width: var(--ds-size-checkbox); height: var(--ds-size-checkbox); margin: var(--ds-space-micro) 0; flex: none; accent-color: var(--ds-color-action-default); }
+.checkbox {
+  appearance: none;
+  box-sizing: border-box;
+  display: inline-grid;
+  place-content: center;
+  border: var(--ds-stroke-default) solid var(--ds-color-border-control);
+  border-radius: var(--ds-radius-sm);
+  background: var(--ds-color-surface-default);
+  cursor: pointer;
+  transition: background-color var(--ds-duration-fast), border-color var(--ds-duration-fast), box-shadow var(--ds-duration-fast);
+}
+.checkbox::before {
+  content: '';
+  width: var(--ds-space-3);
+  height: var(--ds-space-3);
+  background: var(--ds-color-text-on-accent);
+  clip-path: polygon(10% 45%, 38% 72%, 90% 15%, 100% 26%, 39% 91%, 0% 56%);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform var(--ds-duration-normal) ease-out, opacity var(--ds-duration-fast);
+}
+.checkbox:checked, .checkbox:indeterminate { background: var(--ds-color-action-default); border-color: var(--ds-color-action-default); }
+.checkbox:checked::before, .checkbox:indeterminate::before { opacity: 1; transform: scale(1); }
+.checkbox:indeterminate::before { clip-path: inset(42% 8% round var(--ds-stroke-default)); }
+.checkbox:hover:not(:disabled) { border-color: var(--ds-color-action-hover); }
+.checkbox[aria-invalid='true'] { border-color: var(--ds-color-border-error); }
+.checkbox:disabled { opacity: var(--ds-opacity-disabled); cursor: not-allowed; }
+.checkboxLabel:has(.checkbox:disabled) { cursor: not-allowed; }
 .checkboxFeedback { margin-left: var(--ds-space-8); display: flex; flex-direction: column; gap: var(--ds-space-1); }
 .badge { display: inline-flex; align-items: center; width: fit-content; min-height: var(--ds-size-badge); padding: var(--ds-space-micro) var(--ds-space-2); border-radius: var(--ds-radius-sm); font-size: var(--ds-typography-size-caption); font-weight: var(--ds-typography-weight-semibold); line-height: var(--ds-typography-line-height-caption); }
 .badge-neutral { background: var(--ds-color-surface-canvas); color: var(--ds-color-text-secondary); }
@@ -88,7 +121,7 @@
 .input:focus-visible,
 .textarea:focus-visible,
 .checkbox:focus-visible {
-  outline: var(--ds-focus-indicator-width) solid var(--ds-color-focus-ring);
+  outline: var(--ds-focus-indicator-width) solid transparent;
   outline-offset: var(--ds-focus-indicator-offset);
 }
 
@@ -99,8 +132,23 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .button { transition: none; }
+  .button, .link, .input, .textarea { transition: none; }
+  .button:hover:not(:disabled) { translate: none; }
   .spinner { animation: none; }
 }
 
 @keyframes ds-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .checkbox, .checkbox::before { transition: none; }
+}
+@media (forced-colors: active) {
+  .checkbox { appearance: auto; }
+  .checkbox::before { display: none; }
+  .button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { outline-color: Highlight; box-shadow: none; }
+}
+
+.button, .link, .input, .textarea, .checkbox { box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) transparent, 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) transparent; }
+.button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) color-mix(in srgb, var(--ds-color-focus-ring) calc(var(--ds-opacity-disabled) * 100%), transparent), 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) var(--ds-color-surface-accent-subtle); }
+@media (prefers-reduced-motion: reduce) { .button, .link, .input, .textarea, .checkbox { transition: none; } }
+@media (forced-colors: active) { .button, .link, .input, .textarea, .checkbox, .button:focus-visible, .link:focus-visible, .input:focus-visible, .textarea:focus-visible, .checkbox:focus-visible { box-shadow: none; } }

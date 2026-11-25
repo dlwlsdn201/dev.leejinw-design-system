@@ -8,6 +8,8 @@
 }
 .selectTrigger { display: flex; align-items: center; justify-content: space-between; gap: var(--ds-space-2); width: 100%; min-height: var(--ds-size-control-touch); padding: var(--ds-space-2) var(--ds-space-4); border: var(--ds-stroke-default) solid var(--ds-color-border-control); border-radius: var(--ds-radius-md); background: var(--ds-color-surface-default); font-size: var(--ds-typography-size-body); text-align: start; cursor: pointer; }
 .selectTrigger > span:first-child { min-width: 0; white-space: normal; }
+.selectIcon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: var(--ds-space-4); height: var(--ds-space-4); line-height: 0; }
+.selectIcon svg { display: block; width: 100%; height: 100%; }
 .selectTrigger[data-placeholder] { color: var(--ds-color-text-secondary); }
 .selectTrigger[aria-invalid='true'] { border-color: var(--ds-color-border-error); }
 .selectTrigger:disabled, .menuItem[data-disabled], .choiceLabel[data-disabled], .tab:disabled { opacity: var(--ds-opacity-disabled); cursor: not-allowed; }
@@ -64,10 +66,83 @@
 .spinnerDot:nth-child(2), .spinnerBar:nth-child(2) { animation-delay: calc(var(--ds-duration-spinner) / -3); }
 .spinnerDot:nth-child(3), .spinnerBar:nth-child(3) { animation-delay: calc(var(--ds-duration-spinner) / -3 * 2); }
 .spinner { box-sizing: border-box; display: inline-block; flex: none; width: var(--ds-size-spinner); height: var(--ds-size-spinner); border: var(--ds-stroke-strong) solid currentColor; border-right-color: transparent; border-radius: 50%; animation: qp-spin var(--ds-duration-spinner) linear infinite; }
-.selectTrigger:focus-visible, .radio:focus-visible, .switch:focus-visible, .close:focus-visible, .tab:focus-visible, .tabPanel:focus-visible, .dialog:focus-visible, .popover:focus-visible, .toast:focus-visible, .toastViewport:focus-visible { outline: var(--ds-focus-indicator-width) solid var(--ds-color-focus-ring); outline-offset: var(--ds-focus-indicator-offset); }
+.selectTrigger:focus-visible, .radio:focus-visible, .switch:focus-visible, .close:focus-visible, .tab:focus-visible, .tabPanel:focus-visible, .dialog:focus-visible, .popover:focus-visible, .toast:focus-visible, .toastViewport:focus-visible { outline: var(--ds-focus-indicator-width) solid transparent;  outline-offset: var(--ds-focus-indicator-offset); }
 @media (prefers-reduced-motion: reduce) { .switchThumb { transition: none; } .spinner, .spinnerDot, .spinnerBar { animation: none; } .spinnerBar { transform: none; } }
 @media (forced-colors: active) { .radioIndicator, .switch[data-state='checked'] .switchThumb { background: Highlight; } .switch[data-state='checked'] { border-color: Highlight; } .tab[data-state='active'] { border-color: Highlight; } .skeleton { border: var(--ds-stroke-default) solid CanvasText; } }
 @keyframes qp-spin { to { transform: rotate(360deg); } }
 
 @keyframes qp-spinner-dots { 0%, 70%, 100% { opacity: .45; transform: translateY(0); } 35% { opacity: 1; transform: translateY(calc(-1 * var(--ds-space-micro))); } }
 @keyframes qp-spinner-bars { 0%, 70%, 100% { transform: scaleY(.45); } 35% { transform: scaleY(1); } }
+
+/* Translate is independent of the transform used by centered dialogs and toast swipes. */
+.selectTrigger, .menuItem, .switch, .switchThumb, .close, .tab {
+  transition: background-color var(--ds-duration-fast), border-color var(--ds-duration-fast), color var(--ds-duration-fast), transform var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast) ease-out;
+}
+.selectTrigger:hover:not(:disabled):not([aria-invalid='true']),
+.selectTrigger[data-state='open']:not([aria-invalid='true']) { border-color: var(--ds-color-action-default); }
+.selectIcon { transition: transform var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast) ease-out; }
+.selectTrigger[data-state='open'] .selectIcon { transform: rotate(180deg); }
+.selectContent, .menu, .popover, .tooltip {
+  --motion-offset: var(--ds-space-1);
+}
+.selectContent[data-side='top'], .menu[data-side='top'], .popover[data-side='top'], .tooltip[data-side='top'] { --motion-offset: calc(-1 * var(--ds-space-1)); }
+.selectContent[data-state='open'], .menu[data-state='open'], .popover[data-state='open'], .tooltip[data-state='delayed-open'], .tooltip[data-state='instant-open'], .dialog[data-state='open'], .toast[data-state='open'] {
+  animation: guided-enter var(--ds-duration-normal) ease-out both;
+}
+.selectContent[data-state='closed'], .menu[data-state='closed'], .popover[data-state='closed'], .tooltip[data-state='closed'], .dialog[data-state='closed'], .toast[data-state='closed'] {
+  animation: guided-exit var(--ds-duration-fast) ease-in both;
+}
+.overlay[data-state='open'] { animation: guided-overlay-enter var(--ds-duration-normal) ease-out both; }
+.overlay[data-state='closed'] { animation: guided-overlay-exit var(--ds-duration-fast) ease-in both; }
+.tabPanel[data-state='active'] { animation: guided-enter var(--ds-duration-normal) ease-out both; }
+.toast[data-swipe='move'], .toast[data-swipe='cancel'] { animation: none; }
+.toast[data-swipe='cancel'] { transition: transform var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast) ease-out; }
+.toast[data-swipe='end'] { animation: guided-swipe-exit var(--ds-duration-fast) ease-out both; }
+@keyframes guided-enter { from { opacity: 0; translate: 0 var(--motion-offset, var(--ds-space-1)); } to { opacity: 1; translate: 0 0; } }
+@keyframes guided-exit { from { opacity: 1; translate: 0 0; } to { opacity: 0; translate: 0 var(--motion-offset, var(--ds-space-1)); } }
+@keyframes guided-overlay-enter { from { opacity: 0; } to { opacity: var(--ds-opacity-overlay); } }
+@keyframes guided-overlay-exit { from { opacity: var(--ds-opacity-overlay); } to { opacity: 0; } }
+@keyframes guided-swipe-exit { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .selectTrigger, .menuItem, .switch, .switchThumb, .close, .tab, .selectIcon, .toast[data-swipe='cancel'] { transition: none; }
+  .selectContent, .menu, .popover, .tooltip, .dialog, .overlay, .toast, .tabPanel { animation: none !important; }
+}
+
+.radio {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  border: var(--ds-stroke-default) solid var(--ds-color-border-control);
+  border-radius: 50%;
+  background: var(--ds-color-surface-default);
+  cursor: pointer;
+  transition: border-color var(--ds-duration-fast), box-shadow var(--ds-duration-fast);
+}
+.radio::before {
+  content: '';
+  width: var(--ds-space-3);
+  height: var(--ds-space-3);
+  border-radius: 50%;
+  background: var(--ds-color-action-default);
+  opacity: 0;
+  transform: scale(0);
+  transition: transform var(--ds-duration-normal) ease-out, opacity var(--ds-duration-fast);
+}
+.radio:checked, .radio:hover:not(:disabled) { border-color: var(--ds-color-action-default); }
+.radio:checked::before { opacity: 1; transform: scale(1); }
+.radio:disabled { cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) {
+  .radio, .radio::before { transition: none; }
+}
+@media (forced-colors: active) {
+  .radio { appearance: auto; }
+  .radio::before { display: none; }
+  .selectTrigger:focus-visible, .radio:focus-visible, .switch:focus-visible, .close:focus-visible, .tab:focus-visible, .tabPanel:focus-visible, .dialog:focus-visible, .popover:focus-visible, .toast:focus-visible, .toastViewport:focus-visible { outline-color: Highlight; box-shadow: none; }
+}
+
+.tabPanel, .dialog, .popover, .toast, .toastViewport { transition: box-shadow var(--ds-duration-fast) ease-out; }
+
+.selectTrigger, .radio, .switch, .close, .tab, .tabPanel, .dialog, .popover, .toast, .toastViewport { box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) transparent, 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) transparent; }
+.selectTrigger:focus-visible, .radio:focus-visible, .switch:focus-visible, .close:focus-visible, .tab:focus-visible, .tabPanel:focus-visible, .dialog:focus-visible, .popover:focus-visible, .toast:focus-visible, .toastViewport:focus-visible { box-shadow: 0 0 var(--ds-space-2) var(--ds-stroke-default) color-mix(in srgb, var(--ds-color-focus-ring) calc(var(--ds-opacity-disabled) * 100%), transparent), 0 0 var(--ds-space-4) var(--ds-focus-indicator-width) var(--ds-color-surface-accent-subtle); }
+@media (prefers-reduced-motion: reduce) { .selectTrigger, .radio, .switch, .close, .tab, .tabPanel, .dialog, .popover, .toast, .toastViewport { transition: none; } }
+@media (forced-colors: active) { .selectTrigger, .radio, .switch, .close, .tab, .tabPanel, .dialog, .popover, .toast, .toastViewport, .selectTrigger:focus-visible, .radio:focus-visible, .switch:focus-visible, .close:focus-visible, .tab:focus-visible, .tabPanel:focus-visible, .dialog:focus-visible, .popover:focus-visible, .toast:focus-visible, .toastViewport:focus-visible { box-shadow: none; } }
