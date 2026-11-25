@@ -23,3 +23,7 @@
 ### 포커스 fade 보완
 
 focus.ring 색을 opacity.disabled 비율로 투명색과 혼합하고 blur를 space.2/space.4로 넓혔다. 기본 상태에도 같은 크기의 투명 shadow를 지정하고 box-shadow 150ms 전환을 적용해 focus-in/out 모두 페이드한다. reduced-motion에서 즉시 전환하며 forced-colors의 outline을 유지한다.
+
+## Link · A / Flow
+
+사용자가 A 시안을 선택했다. 기본 underline을 유지하면서 hover와 focus-visible에서 currentColor 밑줄이 왼쪽에서 들어오고 오른쪽으로 빠진다. duration.normal과 stroke.strong 토큰을 사용하고, inline 여러 줄은 box-decoration-break: clone으로 표시한다. reduced-motion에서는 즉시 변경된다. 공개 API와 외부 링크 보안 속성은 유지한다.

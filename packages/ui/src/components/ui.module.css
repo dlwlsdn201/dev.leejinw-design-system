@@ -48,10 +48,18 @@
 }
 
 .link { color: var(--ds-color-text-primary); text-decoration: underline; text-underline-offset: 3px; }
-.link { transition: color var(--ds-duration-fast), box-shadow var(--ds-duration-fast) ease-out; }
+.link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0 var(--ds-stroke-strong);
+  background-position: right bottom;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: color var(--ds-duration-fast), background-size var(--ds-duration-normal) ease-out, box-shadow var(--ds-duration-fast) ease-out;
+}
 .link:hover { color: var(--ds-color-text-accent); }
 .link-accent { color: var(--ds-color-text-accent); }
-.link:hover { text-decoration-thickness: 2px; }
+.link:hover, .link:focus-visible { background-size: 100% var(--ds-stroke-strong); background-position: left bottom; }
 
 .field { display: flex; flex-direction: column; gap: var(--ds-space-2); min-width: 0; color: var(--ds-color-text-primary); font-family: var(--ds-font-family-base), sans-serif; }
 .fieldLabel { font-size: var(--ds-typography-size-body-sm); font-weight: var(--ds-typography-weight-semibold); line-height: var(--ds-typography-line-height-body-sm); }
